@@ -9,7 +9,9 @@ def subValue(value1,value2):
 
 def multiValue(value1,value2):
     return value1 * value2
-
+#Developer : Adam Morris
+#University Id: 210101298
+#Description : takes two values and divides them then returns value
 def divideValue(value1,value2):
     return value1 / value2
 
