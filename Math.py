@@ -1,3 +1,5 @@
+#Name: Nicholas Koch
+#ID: 210091988
 #Developer : Umair Khalid
 #University Id: 210051122
 # This function test the sum function implementation.
@@ -26,5 +28,6 @@ def power(value1,value2):
 def mod(value1,value2):
     return value1 % value2
 
-
+def maxTest():
+	return maxValue(2,3)
       
