@@ -1,3 +1,6 @@
+#Developer : Ehsan MEhrdad
+#University ID : 210115516
+#Description : Find the minimum value
 def minValue(value1,value2):
     return min(value1,value2)
 
