@@ -13,6 +13,10 @@ def multiValue(value1,value2):
 def divideValue(value1,value2):
     return value1 / value2
 
+
+def mod(value1, value2):
+    return value1 % value2
+
 #Developer : Umair Khalid
 #University Id: 210051122
 #Description : Power function and test methods
@@ -21,10 +25,7 @@ def power(value1,value2):
     return pow(value1,value2)
 
 def powerTest():
-    return power(2,3)
-
-def mod(value1,value2):
-    return value1 % value2
+    return power(2, 3)
 
 #Name: Nicholas Koch
 #ID: 210091988
