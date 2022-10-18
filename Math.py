@@ -38,6 +38,13 @@ def maxValue(value1, value2):
 
 def maxTest():
 	return maxValue(2,3)
+#Developer : Wanis Mousa
+#University Id: 210156346
+#Description : Power function and test methods
+def power(value1,value2):
+    return pow(value1,value2)
 
+def powerTest():
+    return power(2, 3)
 
       
