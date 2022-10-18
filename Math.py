@@ -29,7 +29,7 @@ def power(value1,value2):
     return pow(value1,value2)
 
 def powerTest():
-    return power(2, 3)
+    print(power(2, 3))
 
 #Name: Nicholas Koch
 #ID: 210091988
@@ -49,4 +49,3 @@ def power(value1,value2):
 def powerTest():
     return power(2, 3)
 
-      
