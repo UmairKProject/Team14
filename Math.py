@@ -3,7 +3,6 @@
 #Description : Find the minimum value
 def minValue(value1,value2):
     return min(value1,value2)
-
 def addValue(value1,value2):
     return value1 + value2
 
