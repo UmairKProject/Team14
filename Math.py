@@ -17,7 +17,9 @@ def multiValue(value1,value2):
 def divideValue(value1,value2):
     return value1 / value2
 
-
+#Developer : Danial jamil
+#University ID : 220253860@aston.ac.uk
+#Description: takes two value input and return the remainder.
 def mod(value1, value2):
     return value1 % value2
 
