@@ -5,10 +5,14 @@ def minValue(value1,value2):
     return min(value1,value2)
 def addValue(value1,value2):
     return value1 + value2
-
+#Developer : Ibrahim Mehmood
+#University ID : 210141504
+#Description : Subtract two values and return result
 def subValue(value1,value2):
     return value1 - value2
-
+#Developer : Hamas Mahroof
+#University ID : 200151713
+#Description : return result of two values multiplied together
 def multiValue(value1,value2):
     return value1 * value2
 #Developer : Adam Morris
