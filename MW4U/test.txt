@@ -1,1 +1,1 @@
-test file
+test <i class="fa fa-fileadded" aria-hidden="true"></i>
