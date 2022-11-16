@@ -36,7 +36,6 @@
             foreach ($rows as $row) {
             ?>
                 <br>
-                <a href = "productDisplay.php/id="<?php $row['prodId'] ?>
                     <div class="productContainer">
                     <br>
                     NAME: <?= $row['prodName'] ?>
