@@ -1,7 +1,7 @@
 <?php
 
 $db_host = 'localhost';
-$db_name = 'mw4u';
+$db_name = 'MW4U';
 $username = 'root';
 $password = '';
 
