@@ -1,9 +1,6 @@
 # Team14
 
-This is a repository for our e-commerce site, which sells mens clothing.
+MW4U is a e-commerce site that sells clothing marketed towards men. The website's insipration was sites such as gymshark that sell clothing that is tailored to a specific target market. It was created during the CS2TP module and had a team of 8 people.
 
-Our main goal with this project is to build on our foundations and create a functional and easy to use site that achieves the goals set out in our project brief.
-
-Languages/Technologies Used:   
-HTML, CSS, JS, PHP, Bootstrap
+Languages/Technologies Used: HTML, CSS, JS, PHP, Bootstrap, MySQL
 
