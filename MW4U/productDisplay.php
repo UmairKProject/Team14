@@ -16,7 +16,8 @@
     <?php
     require_once("connectdb.php");
     $db = new PDO("mysql:dbname=$db_name;host=$db_host", $username, $password);
-    $rows = $db->query("SELECT * FROM products");
+    $id = $_GET["id"];
+    $rows = $db->query("SELECT * FROM products WHERE prodID=$id");
     ?>
 </head>
 <header>
@@ -36,21 +37,19 @@
             foreach ($rows as $row) {
             ?>
                 <br>
-                <a href="productDisplay.php?id=<?php echo $row['prodID'] ?>">
-                    <div class="productContainer">
-                        <br>
-                        NAME: <?= $row['prodName'] ?>
-                        <br>
-                        DESCRIPTION: <?= $row['prodPrice'] ?>
-                        <br>
-                        PRICE: <?= $row['prodInfo'] ?>
-                        <br>
-                        <?php echo '<img width="400" height="300" src="data:image/jpeg;base64,' . base64_encode($row['prodImage']) . '"/>'; ?>
-                    <?php
-                }
-                    ?>
-                    </div>
-                </a>
+                <div class="productContainer">
+                    <br>
+                    NAME: <?= $row['prodName'] ?>
+                    <br>
+                    DESCRIPTION: <?= $row['prodPrice'] ?>
+                    <br>
+                    PRICE: <?= $row['prodInfo'] ?>
+                    <br>
+                    <?php echo '<img width="400" height="300" src="data:image/jpeg;base64,' . base64_encode($row['prodImage']) . '"/>'; ?>
+                <?php
+            }
+                ?>
+                </div></a>
         </div>
     </section>
 
