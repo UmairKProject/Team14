@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
 </head>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <body>
     <div class= "title">
         <h1>Login</h1>
@@ -19,9 +20,12 @@
             </div>
             </form>
         </div>
+        <div class ="g-recaptcha" data-sitekey ="6LcONR8jAAAAAN9354cl4TwWxc5B9icmmGhGH0ir"></div>
         <div class ="info">
             <p>Not a User?</p>
             <a href="" >Register now!</a>
         </div>
+
+</script>
 </body>
 </html>
