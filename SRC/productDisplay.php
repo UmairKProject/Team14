@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="productStyles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <?php
     require_once("connectdb.php");
     $db = new PDO("mysql:dbname=$db_name;host=$db_host", $username, $password);
-    $rows = $db->query("SELECT * FROM products");
+    $id = $_GET["id"];
+    $rows = $db->query("SELECT * FROM products WHERE prodID=$id");
     ?>
 </head>
 <header>
@@ -37,13 +37,13 @@
             ?>
                 <br>
                 <a href="productDisplay.php?id=<?php echo $row['prodID'] ?>">
-                    <div class="productContainer">
+                    <div class="productContemptainer">
                         <br>
                         NAME: <?= $row['prodName'] ?>
                         <br>
-                        DESCRIPTION: <?= $row['prodPrice'] ?>
+                        PRICE: <?= $row['prodPrice'] ?>
                         <br>
-                        PRICE: <?= $row['prodInfo'] ?>
+                        DESCRIPTION: <?= $row['prodInfo'] ?>
                         <br>
                         <?php echo '<img width="400" height="300" src="data:image/jpeg;base64,' . base64_encode($row['prodImage']) . '"/>'; ?>
                     <?php
@@ -51,6 +51,7 @@
                     ?>
                     </div>
                 </a>
+        </div>
         </div>
     </section>
 
