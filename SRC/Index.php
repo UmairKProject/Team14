@@ -19,7 +19,7 @@
   $db = new PDO("mysql:dbname=$db_name;host=$db_host", $username, $password);
   $rows = $db->query("SELECT * FROM products");
   ?>
-    <!-- This is for the rollover images, hovering over, the image changes and shows the second image-->
+  <!-- This is for the rollover images, hovering over, the image changes and shows the second image-->
   <script language="javascript">
     function MouseRollover(MyImage) {
       MyImage.src = "Images/building.jpg";
@@ -204,34 +204,34 @@
     <div class="w3-row w3-padding-32">
       <br>
       <div class="w3-third">
-        <p><b><a href="Products.html">Shoes</a></b></p>
+        <p><b><a href="productsCategory.php?id=1">Shoes</a></b></p>
         <img src="Images/teen7.jpg" class="Hot A class" alt="Random Name" style="width:90%">
       </div>
       <div class="w3-third">
-        <p><b><a href="productsCategory.php?id=1">T-Shirt</a></b></p>
+        <p><b><a href="productsCategory.php?id=2">T-Shirt</a></b></p>
         <img src="assets/images/blackTee.jpg" class="w3-round" alt="Random Name" style="width:90%">
       </div>
       <div class="w3-third">
-        <p><b><a href="Products.html">Jeans</a></b></p>
+        <p><b><a href="productsCategory.php?id=3">Jeans</a></b></p>
         <img src="Images/teen9.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:90%">
       </div>
       <br>
       <br>
       <div class="w3-third">
-        <p><b><a href="Products.html">Caps</a></b></p>
+        <p><b><a href="productsCategory.php?id=4">Caps</a></b></p>
         <img src="Images/teen10.jpg" class="w3-round" alt="Random Name" style="width:90%">
       </div>
       <div class="w3-third">
-        <p><b><a href="Products.html">Hoodies</a></b></p>
+        <p><b><a href="productsCategory.php?id=5">Hoodies</a></b></p>
         <img src="Images/teen11.jpg" class="w3-round" alt="Random Name" style="width:90%">
       </div>
       <div class="w3-third">
-        <p><b><a href="Products.html">Shirts</a></b></p>
+        <p><b><a href="productsCategory.php?id=6">Shirts</a></b></p>
         <img src="Images/teen12.jpg" class="w3-round" alt="Random Name" style="width:90%">
         <br>
       </div>
     </div>
-    <P><b> <a href="Products.html">See all products in Product pags</a></b></P>
+    <P><b> <a href="Products.php">See all products in Product pags</a></b></P>
   </div>
 
   <div class="container">
@@ -276,7 +276,7 @@
 
       <!-- end google maps code-->
 
-<?php include("footer.php") ?>
+      <?php include("footer.php") ?>
 
 </body>
 
