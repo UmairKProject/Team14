@@ -246,12 +246,6 @@
   <!-- Image of location/map -->
 
   <div class="text-center">
-    <br>
-    <h3 style="font-size: xx-large;"> Our location in Birmingham</h3>
-    <br>
-    <img src="Images/location.jpg" class="img-responsive" style="width:100%">
-    <br>
-    <br>
     <div class="text-center">
       <h3 style="font-size: xx-large;">Find us in other locations</h3>
 
