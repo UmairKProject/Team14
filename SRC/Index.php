@@ -85,7 +85,7 @@
       <li><a href="Products.php">Products</a></li>
       <li><a href="New Arrivals.html">New Arrivals</a></li>
       <li><a href="Gallery.html">Gallery</a></li>
-      <li><a href="My Account.html">My Account</a></li>
+      <li><a href="My Account.php">My Account</a></li>
       <li><a href="Contact Us.html">Contact Us</a></li>
       <li><a href="About Us.html">About Us</a></li>
     </ul>

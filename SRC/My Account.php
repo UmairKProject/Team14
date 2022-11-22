@@ -71,7 +71,7 @@
 
             if ($stmt = mysqli_prepare($link, $sql)) {
               // Bind variables to the prepared statement as parameters
-              mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
+              $bp = mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
 
               // Set parameters
               $param_username = $username;
@@ -190,11 +190,11 @@
               <div class="navbar-header">
 
                 <ul class="nav navbar-nav">
-                  <li><a href="Index.html"><i class="fa fa-fw fa-home"></i> Home</a></li>
+                  <li><a href="Index.php"><i class="fa fa-fw fa-home"></i> Home</a></li>
                   <li><a href="Products.html">Products</a></li>
                   <li><a href="New Arrivals.html">New Arrivals</a></li>
                   <li><a href="Gallery.html">Gallery</a></li>
-                  <li class="active"><a href="My Account.html">My Account</a></li>
+                  <li class="active"><a href="My Account.php">My Account</a></li>
                   <li><a href="Contact Us.html">Contact Us</a></li>
                   <li><a href="About Us.html">About Us</a></li>
                 </ul>
