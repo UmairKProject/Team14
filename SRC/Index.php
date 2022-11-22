@@ -7,6 +7,7 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="./assets/logos/favicon.ico">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -73,8 +74,8 @@
 </style>
 
 <nav class="navbar navbar-default">
-  <a class="navbar-brand" href="Index.html">
-    <img src="Images/Logo.png" alt="logo" style="width: 120px;">
+  <a class="navbar-brand" href="Index.php">
+    <img src="./assets/logos/Logo.jpg" alt="logo" style="width: 120px; ">
   </a>
   <div class="container-fluid">
     <div class="navbar-header">
@@ -233,7 +234,7 @@
       </div>
       <div class="w3-third">
         <p><b><a href="Products.html">T-Shirt</a></b></p>
-        <img src="Images/teen8.jpg" class="w3-round" alt="Random Name" style="width:90%">
+        <img src="assets/images/blackTee.jpg" class="w3-round" alt="Random Name" style="width:90%">
       </div>
       <div class="w3-third">
         <p><b><a href="Products.html">Jeans</a></b></p>
