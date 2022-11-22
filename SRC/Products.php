@@ -13,9 +13,15 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <?php
-  require_once("connectdb.php");
-  $db = new PDO("mysql:dbname=$db_name;host=$db_host", $username, $password);
-  $rows = $db->query("SELECT * FROM products");
+    require_once("connectdb.php");
+    $db = new PDO("mysql:dbname=$db_name;host=$db_host", $username, $password);
+    if(isset($_GET['id'])){
+      $id = $_GET["id"];
+      $rows = $db->query("SELECT * FROM products WHERE prodID=$id");
+    } else {
+      $rows = $db->query("SELECT * FROM products");
+    }
+
   ?>
   <style>
     body {
@@ -120,32 +126,10 @@
 
 </head>
 
+<?php include('header.php'); ?>
+
 <body>
 
-  <nav class="navbar navbar-default">
-    <a class="navbar-brand" href="Index.html">
-      <img src="Images/Logo.png" alt="logo" style="width:120px;">
-    </a>
-    <div class="container-fluid">
-      <div class="navbar-header">
-
-      </div>
-      <ul class="nav navbar-nav">
-        <li><a href="Index.php"><i class="fa fa-fw fa-home"></i> Home</a></li>
-        <li class="active"><a href="Products.html">Products</a></li>
-        <li><a href="New Arrivals.html">New Arrivals</a></li>
-        <li><a href="Gallery.html">Gallery</a></li>
-        <li><a href="My Account.html">My Account</a></li>
-        <li><a href="Contact Us.html">Contact Us</a></li>
-        <li><a href="About Us.html">About Us</a></li>
-      </ul>
-      <form class="navbar-form navbar-left" action="/action_page.php">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-      </form>
-    </div>
-  </nav>
   <br>
   <br>
   <div class="productList">
@@ -170,18 +154,7 @@
       </a>
   </div>
 
-
-  <footer class="w3-container w3-padding-64 w3-center w3-light-grey w3-xlarge">
-    <p>Follow us on social media</p>
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
-    <p class="w3-smal"></p> 2022-2023</p>
-    <p class="w3-medium">Designed By: <a href="Index.html" target="_blank">Team Number 14</a></p>
-  </footer>
+<?php include('footer.php'); ?>
 
 </body>
 

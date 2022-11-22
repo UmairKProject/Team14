@@ -20,54 +20,45 @@
     $rows = $db->query("SELECT * FROM products WHERE prodID=$id");
     ?>
 </head>
-<header>
-    <h1> Welcome to your Men's Wear Shop</h1>
-</header>
+
+<?php include('header.php') ?>
 
 <body>
-    <section class="s1">
-        <div class="nav">
-            <a class="home" href="index.php">Home</a>
-            <div class="nav-right">
-                <a id="contactButton" href="#" onclick="contactFunction(); return false;">Contact</a>
-            </div>
-        </div>
-        <div class="productList">
-            <?php
-            foreach ($rows as $row) {
-            ?>
-                <br>
-                <a href="productDisplay.php?id=<?php echo $row['prodID'] ?>">
-                    <div class="productContemptainer">
-                        <br>
-                        NAME: <?= $row['prodName'] ?>
-                        <br>
-                        PRICE: <?= $row['prodPrice'] ?>
-                        <br>
-                        DESCRIPTION: <?= $row['prodInfo'] ?>
-                        <br>
-                        <?php echo '<img width="400" height="300" src="data:image/jpeg;base64,' . base64_encode($row['prodImage']) . '"/>'; ?>
-                    <?php
-                }
-                    ?>
-                    </div>
-                </a>
-        </div>
-        </div>
-    </section>
 
-    <br>
+    <div class="singleProductContainer">
+    <?php
+    foreach ($rows as $row) {
+    ?>
+        <div class="row">
+            <div class="col-md-4">
+                <?php echo '<img width="400" height="300" src="data:image/jpeg;base64,' . base64_encode($row['prodImage']) . '"/>'; ?>
+            </div>
+            <div class="col-md-8">
+                <?= $row['prodName'] ?>
+                <hr>
+                <?= $row['prodInfoShort'] ?>
+                <br>
+                <h5>Price:£<?= $row['prodPrice'] ?></h5>
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                    <button class="btn btn-primary px"> <i class="fa fa-shopping-cart-me-2"></i>Add to Cart</button> 
+                    </div>
+                </div>
+                <hr>
+                Product Description: 
+                <br>
+                <?= $row['prodInfo'] ?>
+            </div>
+
+        </div>
+
+    <?php 
+        }
+    ?>
+    </div>
+
 </body>
-<footer class="w3-container w3-padding-64 w3-center w3-light-grey w3-xlarge">
-    <p>Follow US on social media</p>
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
-    <p class="w3-smal"></p> 2021-2022</p>
-    <p class="w3-medium">Designed By: <a href="Index.html" target="_blank">Team 14 _ Team Project Module</a></p>
-</footer>
+
+<?php include('footer.php'); ?>
 
 </html>
