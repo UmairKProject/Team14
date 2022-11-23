@@ -33,6 +33,7 @@
             <div class="col-md-4">
                 <?php echo '<img width="400" height="300" src="data:image/jpeg;base64,' . base64_encode($row['prodImage']) . '"/>'; ?>
             </div>
+            <!--This will show item with name, price etc and display add item button -->
             <div class="col-md-8">
                 <?= $row['prodName'] ?>
                 <hr>

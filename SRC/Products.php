@@ -21,7 +21,7 @@
   } else {
     $rows = $db->query("SELECT * FROM products");
   }
-
+ 
   ?>
   <style>
     body {
