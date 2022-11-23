@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+<?php
+include ("db_connect.php");
+
+?>
+
+
+
+<html>
 <html lang="en">
 <head>
 <title>Products |Find your product here</title>
@@ -112,13 +119,11 @@
 
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="Index.html"><i class="fa fa-fw fa-home"></i> Home</a></li>
-      <li class="active"><a href="Products.html">Products</a></li>
-      <li><a href="New Arrivals.html">New Arrivals</a></li>
-      <li><a href="Gallery.html">Gallery</a></li>
-      <li><a href="My Account.html">My Account</a></li>
-      <li><a href="Contact Us.html">Contact Us</a></li>
-      <li><a href="About Us.html">About Us</a></li>
+      <li><a href="Index.php"><i class="fa fa-fw fa-home"></i> Home</a></li>
+      <li class="active"><a href="Products.php">Products</a></li>
+      <li><a href="My Account.php">My Account</a></li>
+      <li><a href="Contact Us.php">Contact Us</a></li>
+      <li><a href="About Us.php">About Us</a></li>
     </ul>
     <form class="navbar-form navbar-left" action="/action_page.php">
       <div class="form-group">

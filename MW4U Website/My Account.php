@@ -1,35 +1,75 @@
-<!DOCTYPE html>
+<?php
+include ("db_connect.php");
+
+?>
+
+
+
+<html>
 <html lang="en">
-  <title>Contact Us | Here you can contact Us</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<head>
+<title>My Account</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
+  body, html {
+    font-family: "Lato", sans-serif;
+    height: 100%;
+    margin: 0;
+  }
   
-  body {font-family: "Lato", sans-serif}
   .mySlides {display: none}
 
-/* Create three equal columns that floats next to each other */
+  .bg {
+  /* The image used */
+  background-image: url("images/Electric1.jpg");
+
+  /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
 .column {
   float: left;
-  width: 33%;
-  padding: 70px;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* Clear floats after the columns */
-.row:after {
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
   content: "";
-  display: table;
   clear: both;
+  display: table;
 }
-  </style>
 
+.title {
+  color: grey;
+}
+
+
+.img-comp-container {
+  position: relative;
+  height: 200px; /*should be the same height as the images*/
+}
+</style>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
@@ -45,8 +85,7 @@
 ***********************************************/
 
 </script>
-
-  </head>
+</head>
 <body>
 
 <nav class="navbar navbar-default">
@@ -56,15 +95,12 @@
   <div class="container-fluid">
     <div class="navbar-header">
 
-    </div>
     <ul class="nav navbar-nav">
-      <li><a href="Index.html"><i class="fa fa-fw fa-home"></i> Home</a></li>
-      <li><a href="Products.html">Products</a></li>
-      <li><a href="New Arrivals.html">New Arrivals</a></li>
-      <li><a href="Gallery.html">Gallery</a></li>
-      <li><a href="My Account.html">My Account</a></li>
-      <li class="active"><a href="Contact Us.html">Contact Us</a></li>
-      <li><a href="About Us.html">About Us</a></li>
+      <li><a href="index.php"><i class="fa fa-fw fa-home"></i> Home</a></li>
+      <li><a href="Products.php">Products</a></li>
+      <li class="active"><a href="My Account.php">My Account</a></li>
+      <li><a href="Contact Us.php">Contact Us</a></li>
+      <li><a href="About Us.php">About Us</a></li>
     </ul>
     <form class="navbar-form navbar-left" action="/action_page.php">
       <div class="form-group">
@@ -73,6 +109,7 @@
     </form>
   </div>
 </nav>
+
 
 
 <footer class="w3-container w3-padding-64 w3-center w3-light-grey w3-xlarge">

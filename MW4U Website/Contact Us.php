@@ -1,21 +1,40 @@
-<!DOCTYPE html>
+<?php
+include ("db_connect.php");
+
+?>
+
+
+
+<html>
 <html lang="en">
-  <title>Gallery |Explore and see all the amazing products</title>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <link rel="stylesheet" type="text/css" href="css/lightbox.min.css">
-  <script src="js/lightbox-plus-jquery.min.js"></script>
+  <title>Contact Us | Here you can contact Us</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <style>
+<head>
+<style>
+  
   body {font-family: "Lato", sans-serif}
   .mySlides {display: none}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33%;
+  padding: 70px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
   </style>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -34,8 +53,7 @@
 
 </script>
 
-
-
+  </head>
 <body>
 
 <nav class="navbar navbar-default">
@@ -47,13 +65,11 @@
 
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="Index.html"><i class="fa fa-fw fa-home"></i> Home</a></li>
-      <li><a href="Products.html">Products</a></li>
-      <li><a href="New Arrivals.html">New Arrivals</a></li>
-      <li class="active"><a href="Gallery.html">Gallery</a></li>
-      <li><a href="My Account.html">My Account</a></li>
-      <li><a href="Contact Us.html">Contact Us</a></li>
-      <li><a href="About Us.html">About Us</a></li>
+      <li><a href="index.php"><i class="fa fa-fw fa-home"></i> Home</a></li>
+      <li><a href="Products.php">Products</a></li>
+      <li><a href="My Account.php">My Account</a></li>
+      <li class="active"><a href="Contact Us.php">Contact Us</a></li>
+      <li><a href="About Us.php">About Us</a></li>
     </ul>
     <form class="navbar-form navbar-left" action="/action_page.php">
       <div class="form-group">
@@ -62,14 +78,9 @@
     </form>
   </div>
 </nav>
-<br>
-<br>
-<br>
 
 
-
-
-<footer class="w3-container w3-padding-64 w3-center  w3-light-grey w3-xlarge">
+<footer class="w3-container w3-padding-64 w3-center w3-light-grey w3-xlarge">
   <p>Follow us on social media</p>
   <i class="fa fa-facebook-official w3-hover-opacity"></i>
   <i class="fa fa-instagram w3-hover-opacity"></i>
@@ -78,8 +89,8 @@
   <i class="fa fa-twitter w3-hover-opacity"></i>
   <i class="fa fa-linkedin w3-hover-opacity"></i>
   <p class="w3-smal"></p> 2022-2023</p>
-  <p class="w3-medium">Designed By: <a href="Index.html" target="_blank">Team Nember 14</a></p>
+  <p class="w3-medium">Designed By: <a href="Index.html" target="_blank">Team Number 14</a></p>
 </footer>
   
   </body>
-</html>
+  </html>
