@@ -41,7 +41,7 @@
                 <h5>Price:£<?= $row['prodPrice'] ?></h5>
                 <div class="row mt-3">
                     <div class="col-md-6">
-                    <button class="btn btn-primary px"> <i class="fa fa-shopping-cart-me-2"></i>Add to Cart</button> 
+                    <a href="basket.php?"><button class="btn btn-primary px"> <i class="fa fa-shopping-cart-me-2"></i>Add to Cart</button></a>
                     </div>
                 </div>
                 <hr>
