@@ -1,0 +1,70 @@
+.topheading{
+   background-color: rgb(21, 1, 1);
+   height: 90px;
+   width: 100%;
+   text-align: center;
+   
+}
+.topheading #top_heading{
+   padding-top: 15px;
+   color: white;
+   font-weight: bold;
+   font-size: 50px;
+}
+.form-box{
+   min-height: 100vh;
+   display: flex;
+  align-items: center;
+  justify-content: center;
+  padding:2rem;
+
+}
+.form-box form{
+   padding:2rem;
+  width: 50rem;
+  border-radius: .5rem;
+  text-align: center;
+  border-radius: 5px;
+  border-style: solid;
+}
+.form-box form h3{
+   font-size: 3rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  color: black;
+}
+.form-box form .box{
+   width: 100%;
+   border-radius: .5rem;
+   padding:1.2rem 1.4rem;
+   font-size: 1.8rem;
+   color: black;
+   border: black;
+   margin:1rem 0;
+}
+
+.form-box form p{
+   padding-top: 1.5rem;
+   font-size: 2rem;
+   color: black;
+}
+
+.form-box form p a{
+   color: rgb(13, 151, 197);
+}
+
+.form-box form p a:hover{
+   text-decoration: underline;
+}
+.form-box form .btn{
+   width: 170px;
+   height: 50px;
+   background-color: rgb(104, 104, 255);
+   border-radius: 2px;
+   font-size: 20px;
+}
+#wc_heading, .dbhead{
+   font-size: 60px;
+   font-weight: 20px;
+   text-align: center;
+}
