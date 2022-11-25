@@ -70,7 +70,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     </form>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="adminLogin.php">
+                    <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="AdminLogout.php">
                         <i class="fa fa-fw fa-sign-out"></i>Logout</a>
                 </li>
                 </li>
@@ -242,4 +242,5 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 </div>
 
 </body>
+
 </html>
