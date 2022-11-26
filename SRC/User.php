@@ -8,13 +8,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     exit;
 }
 require_once("connectdb.php");
-$db = new PDO("mysql:dbname=$db_name;host=$db_host", $username, $password);
-if (isset($_GET['id'])) {
-$id = $_GET["id"];
-$rows = $db->query("SELECT * FROM orders WHERE customerID=$id");
-} else {
-echo "Not a category";
-}
 
 ?>
 
@@ -87,7 +80,8 @@ echo "Not a category";
                     </thead>
                     <?php
                     include("dashboardConfig.php");
-                    $sql = 'SELECT * FROM orders WHERE customerID=$id';
+                    $id = $_GET["id"];
+                    $sql = "SELECT * FROM orders WHERE customerID=$id";
                     if (mysqli_query($conn, $sql)) {
                         echo "";
                     } else {

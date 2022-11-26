@@ -9,7 +9,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 }
 
 // Include config file
-require_once "config.php";
 require_once "connectdb.php";
 
 // Define variables and initialize with empty values
@@ -50,8 +49,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute([$productName, $productPrice, $productInformation, $productImage, $productCategory]);
 }
 
-//Close connection
-mysqli_close($link);
 ?>
 
 <!DOCTYPE html>
