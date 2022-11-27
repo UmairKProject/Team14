@@ -9,18 +9,21 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 }
 
 // Include config file
+require_once "config.php";
 require_once "connectdb.php";
 
 // Define variables and initialize with empty values
-$productName = $productCategory = $productPrice = $productInformation = $productImage = "";
+$productName = $productCategory = $productPrice = $productInformation = $productImage = $productImageUpload = "";
 
 // Processing form data when form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $productName = $_POST['productName'];
     $productCategory = $_POST['productCategory'];
     $productPrice = $_POST['productPrice'];
     $productInformation = $_POST['productInfo'];
-    $productImage = $_POST['productImage'];
+    $productImage = $_FILES['productImage'];
+    $productImageUpload = file_get_contents($_FILES['productImage']['tmp_name']);
+
     switch ($productCategory) {
         case 'Shoes':
             $productCategory = '1 - Shoes';
@@ -46,9 +49,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO products (prodName, prodPrice, prodInfo, prodImage, categoryID)
     VALUES (?,?,?,?,?)";
     $stmt = $db->prepare($sql);
-    $stmt->execute([$productName, $productPrice, $productInformation, $productImage, $productCategory]);
+    $stmt->execute([$productName, $productPrice, $productInformation, $productImageUpload, $productCategory]);
 }
 
+//Close connection
+mysqli_close($link);
 ?>
 
 <!DOCTYPE html>
@@ -59,6 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Admin Dashboard</title>
     <link rel="icon" type="image/x-icon" href="./assets/logos/favicon.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel=”stylesheet” href=”https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css”>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -122,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <br>
     <h1 class="my-5">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to our site.</h1>
 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label>Product Name:</label>
             <input type="text" name="productName" value="<?php echo $productName; ?>">
@@ -151,7 +157,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="file" name="productImage" value="<?php echo $productImage; ?>">
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="AddProduct">
+            <input type="submit" class="btn btn-primary" value="AddProduct" />
         </div>
     </form>
 

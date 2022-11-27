@@ -8,6 +8,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     exit;
 }
 require_once("connectdb.php");
+$db = new PDO("mysql:dbname=$db_name;host=$db_host", $username, $password);
+
 
 ?>
 
