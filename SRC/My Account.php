@@ -71,7 +71,7 @@
 
             if ($stmt = mysqli_prepare($link, $sql)) {
               // Bind variables to the prepared statement as parameters
-              mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
+              $bp = mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
 
               // Set parameters
               $param_username = $username;
@@ -101,6 +101,7 @@
           <title>My Account</title>
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="icon" type="image/x-icon" href="./assets/logos/favicon.ico">
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
           <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -190,11 +191,11 @@
               <div class="navbar-header">
 
                 <ul class="nav navbar-nav">
-                  <li><a href="Index.html"><i class="fa fa-fw fa-home"></i> Home</a></li>
+                  <li><a href="Index.php"><i class="fa fa-fw fa-home"></i> Home</a></li>
                   <li><a href="Products.html">Products</a></li>
                   <li><a href="New Arrivals.html">New Arrivals</a></li>
                   <li><a href="Gallery.html">Gallery</a></li>
-                  <li class="active"><a href="My Account.html">My Account</a></li>
+                  <li class="active"><a href="My Account.php">My Account</a></li>
                   <li><a href="Contact Us.html">Contact Us</a></li>
                   <li><a href="About Us.html">About Us</a></li>
                 </ul>
