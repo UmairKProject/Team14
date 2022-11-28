@@ -11,12 +11,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   // Validate username
   if (empty(trim($_POST["username"]))) {
-    $username_err = "Please enter a username.";
+    $username_err = '<span style ="color:#f44242;text-align:left;font-size:15px">Please enter a username</span>';
   } elseif (!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))) {
-    $username_err = "Username can only contain letters, numbers, and underscores.";
+    $username_err = '<span style ="color:#f44242;text-align:left;font-size:15px">Username can only contain letters, numbers, and underscores!</span>';
   } else {
     // Prepare a select statement
-    $sql = "SELECT adminID FROM admin WHERE adminUsername = ?";
+    $sql = "SELECT customerID FROM customers WHERE customerUsername = ?";
 
     if ($stmt = mysqli_prepare($link, $sql)) {
       // Bind variables to the prepared statement as parameters
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         mysqli_stmt_store_result($stmt);
 
         if (mysqli_stmt_num_rows($stmt) == 1) {
-          $username_err = "This username is already taken.";
+          $username_err = '<span style ="color:#f44242;text-align:left;font-size:15px">This username is already taken!</span>';
         } else {
           $username = trim($_POST["username"]);
         }
@@ -46,20 +46,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   // Validate password
   if (empty(trim($_POST["password"]))) {
-    $password_err = "Please enter a password.";
+    $password_err = '<span style ="color:#f44242;text-align:left;font-size:15px">Please enter a password</span>';
   } elseif (strlen(trim($_POST["password"])) < 6) {
-    $password_err = "Password must have atleast 6 characters.";
+    $password_err = '<span style ="color:#f44242;text-align:left;font-size:15px">Password must have atleast 6 characters!</span>';
   } else {
     $password = trim($_POST["password"]);
   }
 
   // Validate confirm password
   if (empty(trim($_POST["confirm_password"]))) {
-    $confirm_password_err = "Please confirm password.";
+    $confirm_password_err = '<span style ="color:#f44242;text-align:left;font-size:15px">Please confirm password</span>';
   } else {
     $confirm_password = trim($_POST["confirm_password"]);
     if (empty($password_err) && ($password != $confirm_password)) {
-      $confirm_password_err = "Password did not match.";
+      $confirm_password_err = '<span style ="color:#f44242;text-align:left;font-size:15px">Password did not match</span>';
     }
   }
 
@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($username_err) && empty($password_err) && empty($confirm_password_err)) {
 
     // Prepare an insert statement
-    $sql = "INSERT INTO admin (adminUsername, adminPassword) VALUES (?, ?)";
+    $sql = "INSERT INTO customers (customerUsername, customerPassword) VALUES (?, ?)";
 
     if ($stmt = mysqli_prepare($link, $sql)) {
       // Bind variables to the prepared statement as parameters
@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       // Attempt to execute the prepared statement
       if (mysqli_stmt_execute($stmt)) {
         // Redirect to login page
-        header("location: adminLogin.php");
+        header("location: login.php");
       } else {
         echo "Oops! Something went wrong. Please try again later.";
       }
@@ -94,6 +94,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   mysqli_close($link);
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -126,13 +128,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <h3>Create a Free Account now!</h3>
       <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" onsubmit="return validate();">
         <label>Username:<span>*</span></label><br>
-        <input type="text" name="username" placeholder="Username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+        <input type="text" name="username" placeholder="Username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>" >
         <span class="invalid-feedback"><?php echo $username_err; ?></span><br>
         <label>Password:<span>*</span></label><br>
-        <input type="password" name="password" placeholder="Password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
+        <input type="password" name="password" placeholder="Password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>" >
         <span class="invalid-feedback"><?php echo $password_err; ?></span><br>
         <label>Confirm Password:<span>*</span></label><br>
-        <input type="password" name="confirm_password" placeholder="Confirm Password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
+        <input type="password" name="confirm_password" placeholder="Confirm Password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>" >
         <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span><br>
     </div>
     <div class="h-captcha" data-sitekey="667aee51-3796-4f0c-a600-8c4f4754745a" data-callback="verifyCaptcha" required></div>
@@ -141,7 +143,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="buttons">
       <button class="register-buttonv2">Register</button><br>
       <p3>Already a User?</p3><br>
-      <button onclick="location.href='adminLogin.php'" class="login-buttonv2" type="button">Login</button>
+      <button onclick="location.href='login.php'" class="login-buttonv2" type="button">Login</button>
     </div>
     </form>
 
@@ -167,7 +169,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   </div>
   </script>
-
+  
   <?php include 'footer.php'; ?>
 </body>
 

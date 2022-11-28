@@ -7,5 +7,5 @@
     <i class="fa fa-twitter w3-hover-opacity"></i>
     <i class="fa fa-linkedin w3-hover-opacity"></i>
     <p class="w3-smal"></p> 2022-2023</p>
-    <p class="w3-medium">Designed By: <a href="Index.html" target="_blank">Team Number 14</a></p>
+    <p class="w3-medium">Designed By: <a href="index.html" target="_blank">Team Number 14</a></p>
   </footer>

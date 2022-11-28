@@ -10,7 +10,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 // Include config file
 require_once "config.php";
-require_once "connectdb.php";
+require_once "connectDB.php";
 
 // Define variables and initialize with empty values
 $productName = $productCategory = $productPrice = $productInformation = $productImage = $productImageUpload = "";
@@ -50,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     VALUES (?,?,?,?,?)";
     $stmt = $db->prepare($sql);
     $stmt->execute([$productName, $productPrice, $productInformation, $productImageUpload, $productCategory]);
+    header("location: adminDashboard.php");
 }
 
 //Close connection
@@ -118,7 +119,7 @@ mysqli_close($link);
                     </form>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="AdminLogout.php">
+                    <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="adminLogout.php">
                         <i class="fa fa-fw fa-sign-out"></i>Logout</a>
                 </li>
                 </li>
