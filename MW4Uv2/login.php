@@ -67,23 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 echo "Oops! Something went wrong. Please try again later.";
             }
-            if ($_POST['username'] != "" || $_POST['password'] != "") {
-                $usernames = $_POST['username'];
-                // md5 encrypted
-                $passwords = md5($_POST['password']);
-                //$password = $_POST['password'];
-                $sqls = "SELECT * FROM `customers` WHERE `customerUsername`=? AND `customerPassword`=? ";
-                $query = $link->prepare($sqls);
-                $query->execute(array($usernames, $passwords));
-                $row = $query->num_rows;
-                $fetch = $query->fetch();
-                if ($row > 0) {
-                    $_SESSION['username'] = $fetch['customerID'];
-                    //echo "<script>alert('That was successfull!')</script> <script>window.location = '#'</script>";
-                } else {
-                   // echo "<script>alert('Invalid Username or Password')</script><script>window.location = 'login.php'</script>";
-                }
-            }
+
 
             // Close statement
             mysqli_stmt_close($stmt);
@@ -94,12 +78,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     mysqli_close($link);
 }
 ?>
-
-<!DOCTYPE html>
+<html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="CSS/Style.css">
+    <link rel="icon" type="image/x-icon" href="/Images/Logo.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -107,19 +93,65 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-    <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-    <script type="text/javascript" src="js/scrolltopcontrol.js"></script>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="CSS/Style.css">
-    <title>Login Page</title>
+
 </head>
+
+<style>
+    body {
+        font-family: "Lato", sans-serif
+    }
+
+    .mySlides {
+        display: none
+    }
+
+    .container {
+        position: relative;
+        width: 100%;
+    }
+
+    .image {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        border-radius: 30px;
+
+        opacity: 0;
+        transition: .3s ease;
+        background-color: #8d8d8d;
+    }
+
+    .container:hover .overlay {
+        opacity: 1;
+    }
+
+    .text {
+        color: #ffffff;
+        font-size: 23px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+</style>
 
 <body>
     <nav class="navbar navbar-default">
-        <a class="navbar-brand" href="Index.html">
+        <a class="navbar-brand" href="index.php">
             <img src="Images/Logo.png" alt="logo" style="width:120px;">
         </a>
         <div class="container-fluid">
@@ -128,7 +160,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <ul class="nav navbar-nav">
                     <li><a href="index.php"><i class="fa fa-fw fa-home"></i> Home</a></li>
                     <li><a href="Products.html">Products</a></li>
-                    <li><a href="New Arrivals.html">New Arrivals</a></li>
                     <li class="active"><a href="login.php">My Account</a></li>
                     <li><a href="ContactUs.html">Contact Us</a></li>
                     <li><a href="AboutUs.html">About Us</a></li>
@@ -142,61 +173,61 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </nav>
     <div class="title">
         <h1>Login</h1>
-    <div id="login">
-        <div class="textinfo">
-            <h2>Welcome back!</h2>
-            <!-- onsubmit="return validate()-->
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-                <label>Username</label><br>
-                <input type="text" name="username" placeholder="Username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-                <span class="invalid-feedback"><?php echo $username_err; ?></span><br>
-                <label>Password</label><br>
-                <input type="password" name="password" placeholder="Password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
-                <span class="invalid-feedback"><?php echo $password_err; ?></span><br>
-        </div>
-        <div class="h-captcha" data-sitekey="667aee51-3796-4f0c-a600-8c4f4754745a"  required></div>
-        <!--data-callback="verifyCaptcha"-->
-        <div id="bot-verify"></div>
+        <div id="login">
+            <div class="textinfo">
+                <h2>Welcome back!</h2>
+                <br>
+                <br>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+                    <label>Username</label><br>
+                    <input type="text" name="username" placeholder="Username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                    <span class="invalid-feedback"><?php echo $username_err; ?></span><br>
+                    <label>Password</label><br>
+                    <input type="password" name="password" placeholder="Password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                    <span class="invalid-feedback"><?php echo $password_err; ?></span><br>
+            </div>
+            <div class="h-captcha" data-sitekey="667aee51-3796-4f0c-a600-8c4f4754745a" data-callback="verifyCaptcha" required></div>
+            <div id="bot-verify"></div>
 
-        <div class="buttons">
-            <button class="login-button">Login</button><br>
-            <p3>or</p3><br>
-            <button onclick="location.href='register.php'" class="register-button" type="button">Register</button>
-        </div>
-        </form>
-        <script src='https://www.hCaptcha.com/1/api.js'></script>
-        <script>
-            var sec = '';
+            <div class="buttons">
+                <button class="login-button">Login</button><br>
+                <p3>or</p3><br>
+                <button onclick="location.href='register.php'" class="register-button" type="button">Register</button>
+            </div>
+            </form>
+            <script src='https://www.hCaptcha.com/1/api.js'></script>
+            <script>
+                var sec = '';
 
-            function validate() {
-                if (sec.length == 0) {
-                    document.getElementById('bot-verify');
-                    alert("Please perform the capachia!")
-                    return false;
+                function validate() {
+                    if (sec.length == 0) {
+                        document.getElementById('bot-verify');
+                        alert("Please perform the capachia!")
+                        return false;
+                    }
+                    alert("Success!")
+                    return true;
                 }
-                alert("Success!")
-                return true;
-            }
 
-            function verifyCaptcha(token) {
-                sec = token;
-                document.getElementById('bot-verify');
-            }
+                function verifyCaptcha(token) {
+                    sec = token;
+                    document.getElementById('bot-verify');
+                }
+            </script>
+            </form>
+        </div>
         </script>
-        </form>
-    </div>
-    </script>
-    <footer class="w3-container w3-padding-64 w3-center w3-light-grey w3-xlarge">
-        <p>Follow us on social media</p>
-        <i class="fa fa-facebook-official w3-hover-opacity"></i>
-        <i class="fa fa-instagram w3-hover-opacity"></i>
-        <i class="fa fa-snapchat w3-hover-opacity"></i>
-        <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-        <i class="fa fa-twitter w3-hover-opacity"></i>
-        <i class="fa fa-linkedin w3-hover-opacity"></i>
-        <p class="w3-smal"></p> 2022-2023</p>
-        <p class="w3-medium">Designed By: <a href="Index.html" target="_blank">Team Number 14</a></p>
-    </footer>
+        <footer class="w3-container w3-padding-64 w3-center w3-light-grey w3-xlarge">
+            <p>Follow us on social media</p>
+            <i class="fa fa-facebook-official w3-hover-opacity"></i>
+            <i class="fa fa-instagram w3-hover-opacity"></i>
+            <i class="fa fa-snapchat w3-hover-opacity"></i>
+            <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+            <i class="fa fa-twitter w3-hover-opacity"></i>
+            <i class="fa fa-linkedin w3-hover-opacity"></i>
+            <p class="w3-smal"></p> 2022-2023</p>
+            <p class="w3-medium">Designed By: <a href="Index.html" target="_blank">Team Number 14</a></p>
+        </footer>
 </body>
 
 </html>
