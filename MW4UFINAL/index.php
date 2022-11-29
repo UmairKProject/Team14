@@ -2,9 +2,7 @@
 include ("db_connect.php");
 
 ?>
-
-
-
+<!-- Page title with other essential links to support CSS and Bootstrap elemts used in the website -->
 <html>
 <html lang="en">
   <head>
@@ -20,6 +18,8 @@ include ("db_connect.php");
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
+
+<!-- Internal CSS used to locat elemnts used in the landing page -->
 <style>
   body {font-family: "Lato", sans-serif}
   .mySlides {display: none}
@@ -68,13 +68,14 @@ include ("db_connect.php");
 }
   </style>
 
+<!-- Navbar class used to locat the navbar in the landing page -->
 <nav class="navbar navbar-default">
   <a class="navbar-brand" href="Index.html">
     <img src="Images/Logo.png" alt="logo" style="width: 120px;">
   </a>
   <div class="container-fluid">
     <div class="navbar-header">
-
+<!-- Constractor of the lnding page and other pages linked -->
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="index.php"><i class="fa fa-fw fa-home"></i> Home</a></li>
@@ -300,7 +301,7 @@ width="1520" height="550" frameborder="0" style="border:0;" allowfullscreen="" a
  <!-- end google maps code-->
 
 
-
+<!-- Footer added to the landing page -->
 <footer class="w3-container w3-padding-64 w3-center w3-light-grey w3-xlarge">
   <p>Follow us on social media</p>
   <i class="fa fa-facebook-official w3-hover-opacity"></i>
