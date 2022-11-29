@@ -24,7 +24,7 @@ try {
 <meta name="language" content="English, EN">
 <meta name="description" content="MW4U basket screen">
 <link rel="icon" type="image/x-icon" href="/Images/Logo.ico">
-
+ <link rel="icon" type="image/x-icon" href="./assets/logos/favicon.ico">
 <script src="Storage.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
