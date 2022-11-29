@@ -14,6 +14,7 @@
             <li><a href="My Account.php">My Account</a></li>
             <li><a href="Contact Us.html">Contact Us</a></li>
             <li><a href="About Us.html">About Us</a></li>
+              <li><a href="Checkout Cart.php">Checkout Cartr</a></li>
           </ul>
           <form class="navbar-form navbar-left" action="/action_page.php">
             <div class="form-group">
