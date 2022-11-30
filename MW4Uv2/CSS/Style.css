@@ -1,6 +1,8 @@
-body {
-    font-size: 20px;
-    background-size: cover;
+body,
+html {
+    font-family: "Lato", sans-serif;
+    height: 100%;
+    margin: 0;
 }
 
 .h-captcha {
@@ -92,13 +94,6 @@ label span {
     color: rgb(255, 0, 0);
 }
 
-body,
-html {
-    font-family: "Lato", sans-serif;
-    height: 100%;
-    margin: 0;
-}
-
 .mySlides {
     display: none
 }
@@ -106,10 +101,8 @@ html {
 .bg {
     /* The image used */
     background-image: url("images/Electric1.jpg");
-
     /* Full height */
     height: 100%;
-
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
@@ -169,7 +162,6 @@ html {
 .review1,
 .review2,
 .review3 {
-
     text-align: center;
     border-radius: 25px;
     border: 1px solid;
@@ -180,10 +172,55 @@ html {
     background-color: rgb(241, 243, 246);
     text-decoration: underline;
 }
-body {
-    font-family: "Lato", sans-serif
-}
 
 .mySlides {
     display: none
+}
+
+
+.mySlides {
+    display: none
+}
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+.image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 30px;
+
+    opacity: 0;
+    transition: .3s ease;
+    background-color: #8d8d8d;
+}
+
+.container:hover .overlay {
+    opacity: 1;
+}
+
+.text {
+    color: #ffffff;
+    font-size: 23px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
