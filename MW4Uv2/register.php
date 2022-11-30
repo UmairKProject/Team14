@@ -108,118 +108,91 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
+<!--Css font-style for the body-->
 <style>
   body {
     font-family: "Lato", sans-serif
   }
-
-  .mySlides {
-    display: none
-  }
-
-  .container {
-    position: relative;
-    width: 100%;
-  }
-
-  .image {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 20px;
-  }
-
-  .overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    border-radius: 30px;
-
-    opacity: 0;
-    transition: .3s ease;
-    background-color: #8d8d8d;
-  }
-
-  .container:hover .overlay {
-    opacity: 1;
-  }
-
-  .text {
-    color: #ffffff;
-    font-size: 23px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    text-align: center;
-  }
 </style>
 
 <body>
+  <!--Navigation bar code-->
   <nav class="navbar navbar-default">
     <a class="navbar-brand" href="index.php">
-      <img src="Images/Logo.png" alt="logo" style="width:120px;">
     </a>
     <div class="container-fluid">
-      <div class="navbar-header">
-        <ul class="nav navbar-nav">
-          <li><a href="index.php"><i class="fa fa-fw fa-home"></i> Home</a></li>
-          <li><a href="Products.html">Products</a></li>
-          <li class="active"><a href="login.php">My Account</a></li>
-          <li><a href="Contact Us.html">Contact Us</a></li>
-          <li><a href="AboutUs.html">About Us</a></li>
-        </ul>
-        <form class="navbar-form navbar-left" action="/action_page.php">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-          </div>
-        </form>
-      </div>
+      <a class="navbar-header" href="index.php">
+        <!--Logo in top corener-->
+        <img src="Images/Logo.png" alt="logo" style="width: 80px;">
+      </a>
+      <!--navgation titles-->
+      <ul class="nav navbar-nav">
+        <!--Home-->
+        <li><a href="index.php"><i class="fa fa-fw fa-home"></i> Home</a></li>
+        <!--Products-->
+        <li><a href="Products.html">Products</a></li>
+        <!--My Account-->
+        <li class="active"><a href="login.php">My Account</a></li>
+        <!--Contact Us-->
+        <li><a href="Contact Us.html">Contact Us</a></li>
+        <!--About Us-->
+        <li><a href="AboutUs.html">About Us</a></li>
+      </ul>
+      <form class="navbar-form navbar-left" action="/action_page.php">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+      </form>
+    </div>
   </nav>
+
   <div class="title">
     <h1>Register</h1>
   </div>
   <div id="register">
+    <!--Register Page contents-->
     <div class="textinfo">
-      <h3>Create a Free Account now!</h3>
-      <br>
-      <br>
-      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+      <!--Header-->
+      <h3>Create a Free Account now!</h3><br><br>
+      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" onsubmit="return validate()">
+        <!--Username-->
         <label>Username:<span>*</span></label><br>
         <input type="text" name="username" placeholder="Username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
         <span class="invalid-feedback"><?php echo $username_err; ?></span><br>
+        <!--Password-->
         <label>Password:<span>*</span></label><br>
         <input type="password" name="password" placeholder="Password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
         <span class="invalid-feedback"><?php echo $password_err; ?></span><br>
+        <!--Confirm Password-->
         <label>Confirm Password:<span>*</span></label><br>
         <input type="password" name="confirm_password" placeholder="Confirm Password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
         <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span><br>
-    </div>
-    <div class="h-captcha" data-sitekey="667aee51-3796-4f0c-a600-8c4f4754745a" data-callback="verifyCaptcha" required></div>
-    <div id="bot-verify"></div>
 
-    <div class="buttons">
-      <button class="register-buttonv2">Register</button><br>
-      <p3>Already a User?</p3><br>
-      <button onclick="location.href='login.php'" class="login-buttonv2" type="button">Login</button>
-    </div>
-    </form>
+        <!--h-capacha code below with stie key-->
+        <!--Reference for code used: https://docs.hcaptcha.com/switch/-->
+        <div class="h-captcha" data-sitekey="667aee51-3796-4f0c-a600-8c4f4754745a" data-callback="verifyCaptcha" required></div>
+        <div id="bot-verify"></div>
 
+        <!--Register Button-->
+        <div class="buttons">
+          <button class="register-buttonv2">Register</button><br>
+          <p3>Already a User?</p3><br>
+          <button onclick="location.href='login.php'" class="login-buttonv2" type="button">Login</button>
+        </div>
+      </form>
+    </div>
+
+    <!--Validation for h-capcha-->
     <script src='https://www.hCaptcha.com/1/api.js'></script>
     <script>
       var sec = '';
 
+      //validate function
       function validate() {
 
+        //if the length is equal to 0, then produce an alert, else, return true
         if (sec.length == 0) {
           document.getElementById('bot-verify');
           alert("Please perform the capachia!")
@@ -229,14 +202,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         return true;
       }
 
+      //verifyCapcha function 
       function verifyCaptcha(token) {
         sec = token;
         document.getElementById('bot-verify');
       }
     </script>
-
   </div>
-  </script>
+
+  <!--Footer contents-->
   <footer class="w3-container w3-padding-64 w3-center w3-light-grey w3-xlarge">
     <p>Follow us on social media</p>
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
