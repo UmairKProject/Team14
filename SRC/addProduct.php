@@ -26,22 +26,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     switch ($productCategory) {
         case 'Shoes':
-            $productCategory = '1 - Shoes';
+            $productCategory = '1';
             break;
         case 'T-Shirt':
-            $productCategory = '2 - T-Shirt';
+            $productCategory = '2';
             break;
         case 'Jeans':
-            $productCategory = '3 - Jeans';
+            $productCategory = '3';
             break;
         case 'Caps':
-            $productCategory = '4 - Caps';
+            $productCategory = '4';
             break;
         case 'Hoodies':
-            $productCategory = '5 - Hoodies';
+            $productCategory = '5';
             break;
         case 'Shirts':
-            $productCategory = '6 - Shirts';
+            $productCategory = '6';
             break;
         default:
     }
@@ -146,8 +146,8 @@ mysqli_close($link);
             </select>
         </div>
         <div class="form-group">
-            <label>Product Price:</label>
-            <input type="text" name="productPrice" placeholder="ex: £10" value="<?php echo $productPrice; ?>">
+            <label>Product Price(£):</label>
+            <input type="text" name="productPrice" placeholder="ex: 10" value="<?php echo $productPrice; ?>">
         </div>
         <div class="form-group">
             <label>Product Info:</label>

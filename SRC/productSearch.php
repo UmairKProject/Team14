@@ -14,12 +14,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <?php
     require_once("connectDB.php");
-    $db = new PDO("mysql:dbname=$db_name;host=$db_host", $username, $password);
     if (isset($_GET['search'])) {
         $searchValue = $_GET['search'];
         $rows = $db->query("SELECT * FROM products WHERE MATCH(prodName) AGAINST('$searchValue')");
     } else {
-        echo "Not a category";
+        echo "No products found";
     }
 
     ?>
@@ -33,6 +32,11 @@
     <br>
     <div class="productList">
         <?php
+        $num_rows = $rows->fetchColumn();
+        if($num_rows <= 0){
+            echo "<h1><center>No products found</h1></center>";
+            echo "<br>";
+        }
         foreach ($rows as $row) {
         ?>
             <br>
@@ -57,4 +61,4 @@
 
 </body>
 
-</html>x
+</html>
