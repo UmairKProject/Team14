@@ -113,9 +113,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <script type="text/javascript" src="js/scrolltopcontrol.js"></script>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <link rel="stylesheet" type="text/css" href="css/Style.css">
   <title>Register Page</title>
 </head>
+<!--Css font-style for the body-->
+<style>
+  body {
+    font-family: "Lato", sans-serif
+  }
+</style>
 
 <body>
   <?php include 'header.php'; ?>
@@ -128,13 +134,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <h3>Create a Free Account now!</h3>
       <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" onsubmit="return validate();">
         <label>Username:<span>*</span></label><br>
-        <input type="text" name="username" placeholder="Username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>" >
+        <input type="text" name="username" placeholder="Username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
         <span class="invalid-feedback"><?php echo $username_err; ?></span><br>
         <label>Password:<span>*</span></label><br>
-        <input type="password" name="password" placeholder="Password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>" >
+        <input type="password" name="password" placeholder="Password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
         <span class="invalid-feedback"><?php echo $password_err; ?></span><br>
         <label>Confirm Password:<span>*</span></label><br>
-        <input type="password" name="confirm_password" placeholder="Confirm Password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>" >
+        <input type="password" name="confirm_password" placeholder="Confirm Password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
         <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span><br>
     </div>
     <div class="h-captcha" data-sitekey="667aee51-3796-4f0c-a600-8c4f4754745a" data-callback="verifyCaptcha" required></div>
@@ -169,7 +175,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   </div>
   </script>
-  
+
   <?php include 'footer.php'; ?>
 </body>
 

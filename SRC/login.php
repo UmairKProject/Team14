@@ -113,9 +113,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script type="text/javascript" src="js/scrolltopcontrol.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./css/styles.css">
+    <link rel="stylesheet" type="text/css" href="./css/Style.css">
     <title>Login Page</title>
 </head>
+
+<!--Css font-style for the body-->
+<style>
+    body {
+        font-family: "Lato", sans-serif
+    }
+</style>
 
 <body>
     <?php include 'header.php'; ?>
