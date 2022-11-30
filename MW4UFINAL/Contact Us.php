@@ -58,11 +58,10 @@ include ("db_connect.php");
 
 <nav class="navbar navbar-default">
   <a class="navbar-brand" href="Index.html">
-    <img src="Images/Logo.png" alt="logo" style="width:120px;">
   </a>
   <div class="container-fluid">
     <div class="navbar-header">
-
+    <img src="Images/Logo.png" alt="logo" style="width: 80px;">
     </div>
     <ul class="nav navbar-nav">
       <li><a href="index.php"><i class="fa fa-fw fa-home"></i> Home</a></li>

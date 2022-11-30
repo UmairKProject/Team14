@@ -70,11 +70,11 @@ include ("db_connect.php");
 
 <!-- Navbar class used to locat the navbar in the landing page -->
 <nav class="navbar navbar-default">
-  <a class="navbar-brand" href="Index.html">
-    <img src="Images/Logo.png" alt="logo" style="width: 120px;">
-  </a>
-  <div class="container-fluid">
-    <div class="navbar-header">
+  <a class="navbar-brand" href="index.php" ></a>
+  <div class="container-fluid"  >
+    <div class="navbar-header" >
+    <img src="Images/Logo.png" alt="logo" style="width: 80px;">
+    
 <!-- Constractor of the lnding page and other pages linked -->
     </div>
     <ul class="nav navbar-nav">
@@ -166,14 +166,14 @@ include ("db_connect.php");
       <img src="Images/teen6.jpg" alt="Home page">
       <div class="carousel-caption">
         <h3>High quality, long lasting</h3>
-        <P> <a href="Products.html">See more in product page</a></P>
+        <P> <a href="Products.php">See more in product page</a></P>
       </div>
     </div>
     <div class="item active">
       <img src="Images/teen1.jpg" alt="Benz A class">
       <div class="carousel-caption">
         <h3>Buy your desired style</h3>
-        <P> <a href="Products.html">See more in product page</a></P>
+        <P> <a href="Products.php">See more in product page</a></P>
       </div>
     </div>
 
@@ -181,7 +181,7 @@ include ("db_connect.php");
       <img src="Images/teen2.jpg" alt="Benz B class">
       <div class="carousel-caption">
         <h3>Easy way to look smart</h3>
-        <P> <a href="Products.html">See more in product page</a></P>
+        <P> <a href="Products.php">See more in product page</a></P>
       </div>
     </div>
 
@@ -189,7 +189,7 @@ include ("db_connect.php");
       <img src="Images/teen3.jpg" alt="Benz C class">
       <div class="carousel-caption">
         <h3>To look great, you need a few click</h3>
-        <P> <a href="Products.html">See more in product page</a></P>
+        <P> <a href="Products.php">See more in product page</a></P>
       </div>
     </div>
     
@@ -197,7 +197,7 @@ include ("db_connect.php");
       <img src="Images/teen4.jpg" alt="Electric cars">
       <div class="carousel-caption">
         <h3>Just explore MW4U</h3>
-        <P> <a href="Products.html">See more in product page</a></P>
+        <P> <a href="Products.php">See more in product page</a></P>
       </div>
     </div>
 
@@ -205,7 +205,7 @@ include ("db_connect.php");
       <img src="Images/teen5.jpg" alt="Benz E class">
       <div class="carousel-caption">
         <h3>Beauty on the outside. Wellness on the inside.</h3>
-        <P> <a href="Products.html">See more in product page</a></P>
+        <P> <a href="Products.php">See more in product page</a></P>
       </div>
     </div>
   </div>
@@ -226,34 +226,34 @@ include ("db_connect.php");
   <div class="w3-row w3-padding-32">
     <br>
     <div class="w3-third">
-      <p><b><a href="Products.html">Shoes</a></b></p>
+      <p><b><a href="Products.php">Shoes</a></b></p>
       <img src="Images/teen7.jpg" class="Hot A class" alt="Random Name" style="width:90%">
     </div>
     <div class="w3-third">
-      <p><b><a href="Products.html">T-Shirt</a></b></p>
+      <p><b><a href="Products.php">T-Shirt</a></b></p>
       <img src="Images/teen8.jpg" class="w3-round" alt="Random Name" style="width:90%">
     </div>
     <div class="w3-third">
-      <p><b><a href="Products.html">Jeans</a></b></p>
+      <p><b><a href="Products.php">Jeans</a></b></p>
       <img src="Images/teen9.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:90%">
     </div>
     <br>
     <br>
     <div class="w3-third">
-      <p><b><a href="Products.html">Caps</a></b></p>
+      <p><b><a href="Products.php">Caps</a></b></p>
       <img src="Images/teen10.jpg" class="w3-round" alt="Random Name" style="width:90%">
     </div>
     <div class="w3-third">
-      <p><b><a href="Products.html">Hoodies</a></b></p>
+      <p><b><a href="Products.php">Hoodies</a></b></p>
       <img src="Images/teen11.jpg" class="w3-round" alt="Random Name" style="width:90%">
     </div>
     <div class="w3-third">
-      <p><b><a href="Products.html">Shirts</a></b></p>
+      <p><b><a href="Products.php">Shirts</a></b></p>
       <img src="Images/teen12.jpg" class="w3-round" alt="Random Name" style="width:90%">
       <br>
     </div>
   </div>
-  <P><b> <a href="Products.html">See all products in Product pags</a></b></P>
+  <P><b> <a href="Products.php">See all products in Product pags</a></b></P>
 </div>
 
 <div class="container">
@@ -296,7 +296,7 @@ var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 </script>
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2430.048080853831!2d-1.897628284651387!3d52.47826514707445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870bc88d94818e9%3A0x88b5cd24e7637041!2s148%20New%20St%2C%20Birmingham%20B2%204NY!5e0!3m2!1sen!2suk!4v1605212104422!5m2!1sen!2suk" 
-width="1520" height="550" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+width="2000" height="550" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
  
  <!-- end google maps code-->
 
