@@ -19,7 +19,18 @@
   $db = new PDO("mysql:dbname=$db_name;host=$db_host", $username, $password);
   $rows = $db->query("SELECT * FROM products");
   ?>
+  <!-- This is for the rollover images, hovering over, the image changes and shows the second image-->
+  <script language="javascript">
+    function MouseRollover(MyImage) {
+      MyImage.src = "Images/building.jpg";
+    }
+
+    function MouseOut(MyImage) {
+      MyImage.src = "Images/building1.jpeg";
+    }
+  </script>
 </head>
+
 <style>
   body {
     font-family: "Lato", sans-serif
@@ -73,44 +84,8 @@
   }
 </style>
 
-<nav class="navbar navbar-default">
-  <a class="navbar-brand" href="Index.php">
-    <img src="./assets/logos/Logo.jpg" alt="logo" style="width: 120px; ">
-  </a>
-  <div class="container-fluid">
-    <div class="navbar-header">
+<?php include("header.php"); ?>
 
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="Index.php"><i class="fa fa-fw fa-home"></i> Home</a></li>
-      <li><a href="Products.php">Products</a></li>
-      <li><a href="New Arrivals.html">New Arrivals</a></li>
-      <li><a href="Gallery.html">Gallery</a></li>
-      <li><a href="My Account.php">My Account</a></li>
-      <li><a href="Contact Us.html">Contact Us</a></li>
-      <li><a href="About Us.html">About Us</a></li>
-    </ul>
-    <form class="navbar-form navbar-left" action="/action_page.php">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search">
-      </div>
-    </form>
-  </div>
-</nav>
-</header>
-
-<head>
-  <!-- This is for the rollover images, hovering over, the image changes and shows the second image-->
-  <script language="javascript">
-    function MouseRollover(MyImage) {
-      MyImage.src = "Images/building.jpg";
-    }
-
-    function MouseOut(MyImage) {
-      MyImage.src = "Images/building1.jpeg";
-    }
-  </script>
-</head>
 
 <body onLoad="show_clock()">
 
@@ -229,34 +204,34 @@
     <div class="w3-row w3-padding-32">
       <br>
       <div class="w3-third">
-        <p><b><a href="Products.html">Shoes</a></b></p>
+        <p><b><a href="productsCategory.php?id=1">Shoes</a></b></p>
         <img src="Images/teen7.jpg" class="Hot A class" alt="Random Name" style="width:90%">
       </div>
       <div class="w3-third">
-        <p><b><a href="Products.html">T-Shirt</a></b></p>
+        <p><b><a href="productsCategory.php?id=2">T-Shirt</a></b></p>
         <img src="assets/images/blackTee.jpg" class="w3-round" alt="Random Name" style="width:90%">
       </div>
       <div class="w3-third">
-        <p><b><a href="Products.html">Jeans</a></b></p>
+        <p><b><a href="productsCategory.php?id=3">Jeans</a></b></p>
         <img src="Images/teen9.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:90%">
       </div>
       <br>
       <br>
       <div class="w3-third">
-        <p><b><a href="Products.html">Caps</a></b></p>
+        <p><b><a href="productsCategory.php?id=4">Caps</a></b></p>
         <img src="Images/teen10.jpg" class="w3-round" alt="Random Name" style="width:90%">
       </div>
       <div class="w3-third">
-        <p><b><a href="Products.html">Hoodies</a></b></p>
+        <p><b><a href="productsCategory.php?id=5">Hoodies</a></b></p>
         <img src="Images/teen11.jpg" class="w3-round" alt="Random Name" style="width:90%">
       </div>
       <div class="w3-third">
-        <p><b><a href="Products.html">Shirts</a></b></p>
+        <p><b><a href="productsCategory.php?id=6">Shirts</a></b></p>
         <img src="Images/teen12.jpg" class="w3-round" alt="Random Name" style="width:90%">
         <br>
       </div>
     </div>
-    <P><b> <a href="Products.html">See all products in Product pags</a></b></P>
+    <P><b> <a href="Products.php">See all products in Product pags</a></b></P>
   </div>
 
   <div class="container">
@@ -271,12 +246,6 @@
   <!-- Image of location/map -->
 
   <div class="text-center">
-    <br>
-    <h3 style="font-size: xx-large;"> Our location in Birmingham</h3>
-    <br>
-    <img src="Images/location.jpg" class="img-responsive" style="width:100%">
-    <br>
-    <br>
     <div class="text-center">
       <h3 style="font-size: xx-large;">Find us in other locations</h3>
 
@@ -301,19 +270,7 @@
 
       <!-- end google maps code-->
 
-
-
-      <footer class="w3-container w3-padding-64 w3-center w3-light-grey w3-xlarge">
-        <p>Follow us on social media</p>
-        <i class="fa fa-facebook-official w3-hover-opacity"></i>
-        <i class="fa fa-instagram w3-hover-opacity"></i>
-        <i class="fa fa-snapchat w3-hover-opacity"></i>
-        <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-        <i class="fa fa-twitter w3-hover-opacity"></i>
-        <i class="fa fa-linkedin w3-hover-opacity"></i>
-        <p class="w3-smal"></p> 2022-2023</p>
-        <p class="w3-medium">Designed By: <a href="Index.html" target="_blank">Team Number 14</a></p>
-      </footer>
+      <?php include("footer.php") ?>
 
 </body>
 
