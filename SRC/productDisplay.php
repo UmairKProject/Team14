@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <?php
@@ -34,20 +34,40 @@
                 <?php echo '<img width="400" height="300" src="data:image/jpeg;base64,' . base64_encode($row['prodImage']) . '"/>'; ?>
             </div>
             <div class="col-md-8">
-                <?= $row['prodName'] ?>
-                <hr>
-                <?= $row['prodInfoShort'] ?>
+                <div class="row">
+                    <h1 class="productImportant productName"><?= $row['prodName'] ?></h1>
+                </div>
                 <br>
-                <h5>Price:£<?= $row['prodPrice'] ?></h5>
+                <div class="row">
+                    <?= $row['prodInfoShort'] ?>
+                </div>
+                <br>
+                <div class="row" align="center">
+                    <h4 class="productDescription">Size:
+                    <select class="custom-select" style="width:50px" ></h4>
+                        <option value="0">XS</option>
+                        <option value="1">S</option>
+                        <option value="2">M</option>
+                        <option value="3">L</option>
+                        <option value="4">XL</option>
+                    </select>
+                </div>
+                <br>
+                <div class="row">
+                    <h5 class="productImportant">Price:<span class="priceHighlight">£<?= $row['prodPrice'] ?></span></h5>
+                </div>
                 <div class="row mt-3">
-                    <div class="col-md-6">
-                    <a href="basket.php?"><button class="btn btn-primary px"> <i class="fa fa-shopping-cart-me-2"></i>Add to Cart</button></a>
+                    <div class="productImportant">
+                        <a href="basket.php?"><button class="btn btn-primary btn-lg"> <i class="fa fa-shopping-cart-me-2"></i>Add to Cart</button></a>
                     </div>
                 </div>
-                <hr>
-                Product Description: 
                 <br>
-                <?= $row['prodInfo'] ?>
+                <div class="row">
+                    <h4 class="productDescription">Product Description: </h4>
+                </div>
+                <div class="row">
+                    <?= $row['prodInfo'] ?>
+                </div>
             </div>
 
         </div>
@@ -56,7 +76,7 @@
         }
     ?>
     </div>
-
+        <br>
 </body>
 
 <?php include('footer.php'); ?>
