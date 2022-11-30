@@ -23,6 +23,7 @@
   }
  
   ?>
+/*PRODUCT PAGE STYLING*/
   <style>
     body {
       font-family: "Lato", sans-serif
@@ -42,86 +43,68 @@
       box-sizing: inherit;
     }
 
-    .column {
-      float: left;
-      width: 33.3%;
-      margin-bottom: 16px;
-      padding: 0 8px;
-    }
+   .list-icon{
 
-    @media screen and (max-width: 650px) {
-      .column {
-        width: 100%;
-        display: block;
-      }
-    }
+       color: #c0aa83;
 
-    .card {
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    }
+   }
 
-    .container {
-      padding: 0 16px;
-    }
+   .tags{
+       color: #242424;
+       font-family: 'Kanit',sans-serif;
+       font-size: 20px;
+       font-weight: 200;
+   }
 
-    .container::after,
-    .row::after {
-      content: "";
-      clear: both;
-      display: table;
-    }
+   .tags{
+       color: #242424;
+       font-family: 'Kanit',sans-serif;
+       font-size: 20px;
+       font-weight: 200;
+   }
 
-    .title {
-      color: grey;
-    }
 
-    .button {
-      border: none;
-      outline: 0;
-      display: inline-block;
-      padding: 8px;
-      color: white;
-      background-color: rgb(131, 131, 131);
-      text-align: center;
-      cursor: pointer;
-      width: 20%;
-      border-radius: 20px;
-      align-self: center;
-    }
 
-    * {
-      box-sizing: border-box;
-    }
+   .product-sidebar-list{
+       color: #242424;
+   }
 
-    .img-comp-container {
-      position: relative;
-      height: 200px;
-      /*should be the same height as the images*/
-    }
+   .product-sidebar-list:hover{
+       color: #c0aa83;
+   }
 
-    .img-comp-img {
-      position: absolute;
-      width: auto;
-      height: auto;
-      overflow: hidden;
-    }
+   .card-title{
+       color: #c0aa83;
+       font-family: 'Kanit',sans-serif;
+       font-size: 25px;
+       font-weight: 900;
+   }
 
-    .img-comp-img img {
-      display: block;
-      vertical-align: middle;
-    }
+   .card-text{
+       font-family: 'Kanit',sans-serif;
+       font-size: 13px;
+   }
 
-    .img-comp-slider {
-      position: absolute;
-      z-index: 9;
-      cursor: ew-resize;
-      /*set the appearance of the slider:*/
-      width: 40px;
-      height: 40px;
-      background-color: #2196F3;
-      opacity: 0.7;
-      border-radius: 50%;
-    }
+   .price-tag{
+       color: #c0aa83;
+       font-family: 'Kanit',sans-serif;
+       font-size: 25px;
+       font-weight: 900;
+   }
+
+   .button-text{
+       font-family: 'Kanit',sans-serif;
+       font-size: 14px;
+       font-weight: 900;
+   }
+
+   .product-image{
+       width: 200px;
+       height: 200px;
+   }
+
+
+
   </style>
 
 </head>
