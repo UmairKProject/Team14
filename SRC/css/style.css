@@ -1,0 +1,226 @@
+body,
+html {
+    font-family: "Lato", sans-serif;
+    height: 100%;
+    margin: 0;
+}
+
+.h-captcha {
+    margin: 10px auto;
+    max-width: 300px;
+}
+
+#login,
+#register {
+    box-shadow: 50px 30px 20px rgb(255, 255, 255);
+    margin: 25px auto;
+    justify-content: space-between;
+    max-width: 370px;
+    padding: 30px;
+    border-radius: 25px;
+    border: 1px solid;
+}
+
+#password,
+#email,
+#name,
+#confirm-password {
+    height: 30px;
+    width: 307px;
+    font-size: 14pt;
+}
+
+.buttons {
+    height: 120px;
+
+}
+
+.login-button,
+.register-button,
+.login-buttonv2,
+.register-buttonv2 {
+    color: black;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 25px;
+}
+
+.login-button {
+    padding: 7px 135px;
+    background-color: rgb(166, 166, 166);
+}
+
+.login-buttonv2 {
+    padding: 7px 135px;
+    background-color: white;
+}
+
+.register-button {
+    padding: 7px 125px;
+    background-color: white;
+}
+
+.register-buttonv2 {
+    padding: 7px 125px;
+    background-color: rgb(166, 166, 166);
+}
+
+.login-button:hover,
+.register-button:hover,
+.login-buttonv2:hover,
+.register-buttonv2:hover {
+    background-color: #1a599d;
+    color: white;
+}
+
+.buttons,
+h1 {
+    text-align: center;
+
+}
+
+h2,
+h3 {
+    margin: 10px 0px 40px 0px;
+    text-align: center;
+}
+
+label {
+    text-align: center;
+}
+
+label span {
+    color: rgb(255, 0, 0);
+}
+
+.mySlides {
+    display: none
+}
+
+.bg {
+    /* The image used */
+    background-image: url("images/Electric1.jpg");
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.column {
+    float: left;
+    width: 33.3%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    padding: 0 16px;
+}
+
+.container::after,
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.title {
+    color: rgb(0, 0, 0);
+}
+
+
+.img-comp-container {
+    position: relative;
+    height: 200px;
+    /*should be the same height as the images*/
+}
+
+.test,
+.maps {
+    padding: 50px 50px 50px 50px;
+    text-align: center;
+    font-size: larger;
+}
+
+.reviews {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 3em;
+    width: 80%;
+    margin: 0 auto;
+    padding: 50px 50px 30px 30px;
+}
+
+.review1,
+.review2,
+.review3 {
+    text-align: center;
+    border-radius: 25px;
+    border: 1px solid;
+    padding: 10px;
+}
+
+.headder {
+    background-color: rgb(241, 243, 246);
+    text-decoration: underline;
+}
+
+.mySlides {
+    display: none
+}
+
+
+.mySlides {
+    display: none
+}
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+.image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 30px;
+
+    opacity: 0;
+    transition: .3s ease;
+    background-color: #8d8d8d;
+}
+
+.container:hover .overlay {
+    opacity: 1;
+}
+
+.text {
+    color: #ffffff;
+    font-size: 23px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
