@@ -15,7 +15,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 <head>
     <meta charset="UTF-8">
     <title>Admin Dashboard</title>
-    <link rel="icon" type="image/x-icon" href="./assets/logos/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/Images/Logo.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -46,7 +46,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         <tr>
                             <th>ID</th>
                             <th>Order Date</th>
-                            <th>Product ID</th>
+                            <th>Customer ID</th>
+                            <th>Total Price</th>
+                            <th>Order Status</th>
                         </tr>
                     </thead>
                     <?php
@@ -71,7 +73,13 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                         <?php echo $row['orderDate']; ?>
                                     </td>
                                     <td>
-                                        <?php echo $row['prodID']; ?>
+                                        <?php echo $row['customerID']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $row['totalPrice']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $row['orderStatus']; ?>
                                     </td>
                                 </tr>
                             </tbody>
@@ -150,6 +158,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 <tr>
                                     <th>ID</th>
                                     <th>Name of Product</th>
+                                    <th>Code of Product</th>
                                     <th>Price of Product</th>
                                     <th>Product Category</th>
                                     <th>Product Details</th>
@@ -175,6 +184,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                             </th>
                                             <td>
                                                 <?php echo $row['prodName']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row['prodCode']; ?>
                                             </td>
                                             <td>
                                                 <?php echo $row['prodPrice']; ?>

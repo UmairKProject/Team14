@@ -13,15 +13,17 @@ require_once "config.php";
 require_once "connectDB.php";
 
 // Define variables and initialize with empty values
-$productName = $productCategory = $productPrice = $productInformation = $productImage = $productImageUpload = "";
+$productName = $productCategory = $productPrice = $productInformation = $productImage = $productImageUpload = $productCode = "";
 
 // Processing form data when form is submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $productName = $_POST['productName'];
+    $productCode = $_POST['productCode'];
     $productCategory = $_POST['productCategory'];
     $productPrice = $_POST['productPrice'];
     $productInformation = $_POST['productInfo'];
     $productImage = $_FILES['productImage'];
+
     $productImageUpload = file_get_contents($_FILES['productImage']['tmp_name']);
 
     switch ($productCategory) {
@@ -46,10 +48,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         default:
     }
 
-    $sql = "INSERT INTO products (prodName, prodPrice, prodInfo, prodImage, categoryID)
-    VALUES (?,?,?,?,?)";
+    $sql = "INSERT INTO products (prodName, prodPrice, prodInfo, prodImage, categoryID, prodCode)
+    VALUES (?,?,?,?,?,?)";
     $stmt = $db->prepare($sql);
-    $stmt->execute([$productName, $productPrice, $productInformation, $productImageUpload, $productCategory]);
+    $stmt->execute([$productName, $productPrice, $productInformation, $productImageUpload, $productCategory, $productCode]);
     header("location: adminDashboard.php");
 }
 
@@ -63,9 +65,11 @@ mysqli_close($link);
 <head>
     <meta charset="UTF-8">
     <title>Admin Dashboard</title>
-    <link rel="icon" type="image/x-icon" href="./assets/logos/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/Images/Logo.ico">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel=”stylesheet” href=”https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css”>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -74,58 +78,11 @@ mysqli_close($link);
         }
     </style>
 </head>
-
+<header>
+    <?php include 'adminDashboardHeader.php'?>
+</header>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-        <a class="navbar-brand" href="adminDashboard.php">Admin Dashboard</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                    <a class="nav-link" href="addProduct.php">
-                        <i class="fa fa-check-square"></i>
-                        <span class="nav-link-text">Create Product</span>
-                    </a>
-                </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                    <a class="nav-link" href="register.php">
-                        <i class="fa fas fa-user"></i>
-                        <span class="nav-link-text">Register Users</span>
-                    </a>
-                </li>
-            </ul>
-            <ul class="navbar-nav sidenav-toggler">
-                <li class="nav-item">
-                    <a class="nav-link text-center" id="sidenavToggler">
-                        <i class="fa fa-fw fa-angle-left"></i>
-                    </a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown">
-                <li class="nav-item">
-                    <form class="form-inline my-2 my-lg-0 mr-lg-2">
-                        <div class="input-group">
-                            <input class="form-control" type="text" placeholder="Search for...">
-                            <span class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                        </div>
-                    </form>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="adminLogout.php">
-                        <i class="fa fa-fw fa-sign-out"></i>Logout</a>
-                </li>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    
     <br>
     <h1 class="my-5">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to our site.</h1>
 
@@ -133,6 +90,10 @@ mysqli_close($link);
         <div class="form-group">
             <label>Product Name:</label>
             <input type="text" name="productName" value="<?php echo $productName; ?>">
+        </div>
+        <div class="form-group">
+            <label>Product Code:</label>
+            <input type="text" name="productCode" value="<?php echo $productCode; ?>">
         </div>
         <div class="form-group">
             <label>Product Category:</label>

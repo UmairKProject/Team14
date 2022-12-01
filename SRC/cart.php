@@ -43,14 +43,15 @@ if (!empty($_GET["action"])) {
 			break;
 		case "checkout":
 			$date = date('Y-m-d');
+			$order_Status = "Processing";
 			$totalPrice = $_GET['price'];
 			$username = $_POST['username'];
 			$stmt2 = $db->prepare("SELECT customerID FROM customers WHERE customerUsername='" . $username . "'");
 			$userID = $stmt2->execute();
 			if (!empty($username)) {
-				$sql = "INSERT INTO orders (orderDate, totalPrice, customerID) VALUES (?,?,?)";
+				$sql = "INSERT INTO orders (orderDate, totalPrice, customerID, orderStatus) VALUES (?,?,?,?)";
 				$stmt = $db->prepare($sql);
-				$stmt->execute([$date, $totalPrice, $userID]);
+				$stmt->execute([$date, $totalPrice, $userID,$order_Status]);
 				unset($_SESSION["cart_item"]);
 				unset($_POST['username']);
 				unset($_GET['price']);

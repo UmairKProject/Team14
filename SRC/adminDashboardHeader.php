@@ -13,9 +13,9 @@
                     </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                    <a class="nav-link" href="userSettings.php">
-                        <i class="fa fas fa-user"></i>
-                        <span class="nav-link-text">Register Users</span>
+                    <a class="nav-link" href="adminMessages.php">
+                        <i class="fa fa-check-square"></i>
+                        <span class="nav-link-text">Messages</span>
                     </a>
                 </li>
             </ul>
@@ -29,16 +29,6 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
                 <li class="nav-item">
-                    <form class="form-inline my-2 my-lg-0 mr-lg-2">
-                        <div class="input-group">
-                            <input class="form-control" type="text" placeholder="Search for...">
-                            <span class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                        </div>
-                    </form>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="adminLogout.php">

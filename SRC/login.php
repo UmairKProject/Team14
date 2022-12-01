@@ -101,6 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="/Images/Logo.ico">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -148,7 +149,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="buttons">
                 <button class="login-button">Login</button><br>
                 <p3>or</p3><br>
-                <button onclick="location.href='register.php'" class="register-button" type="button">Register</button>
+                <button onclick="location.href='register.php?page=account'" class="register-button" type="button">Register</button>
             </div>
             </form>
             <script src='https://www.hCaptcha.com/1/api.js'></script>

@@ -5,6 +5,7 @@
   <title>Products |Find your product here</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="/Images/Logo.ico">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -38,14 +39,13 @@
         foreach ($rows as $row) {
         ?>
           <br>
-          <a href="productDisplay.php?id=<?php echo $row['prodID'] ?>">
+          <a href="productDisplay.php?id=<?php echo $row['prodID'] ?>&page=product">
             <div class="col-sm-3 col-md-6 col-lg-4">
               <div class="card">
                 <div class="card-body text-center">
                   <?php echo '<img width="100" height="100" src="data:image/jpeg;base64,' . base64_encode($row['prodImage']) . '"/>'; ?>
                   <h5 class="card-title"><b><?php echo $row['prodName']; ?></b></h5>
                   <p class="tags">Price: £<?php echo $row['prodPrice']; ?></p>
-                  <p class="card-text small"><?php echo $row['prodInfo']; ?></p>
                 </div>
               </div>
             </div>
