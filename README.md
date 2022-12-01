@@ -6,3 +6,4 @@ Languages/Technologies Used: HTML/CSS/PHP/JavaScript/MySQL/Bootstrap
 
 Preview:
 
+![Screenshot](./SRC/Images/githubPreview.jpg)
