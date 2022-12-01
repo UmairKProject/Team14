@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/products.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <?php
@@ -17,48 +18,49 @@
     if (isset($_GET['search'])) {
         $searchValue = $_GET['search'];
         $rows = $db->query("SELECT * FROM products WHERE MATCH(prodName) AGAINST('$searchValue')");
-    } else {
-        echo "No products found";
     }
-
     ?>
 </head>
 
+<!-- header for the page-->
 <?php include('header.php'); ?>
 
 <body>
-
-    <br>
-    <br>
-    <div class="productList">
-        <?php
-        $num_rows = $rows->fetchColumn();
-        if($num_rows <= 0){
-            echo "<h1><center>No products found</h1></center>";
-            echo "<br>";
-        }
-        foreach ($rows as $row) {
-        ?>
-            <br>
-            <a href="productDisplay.php?id=<?php echo $row['prodID'] ?>">
-                <div class="productContainer">
-                    <br>
-                    NAME: <?= $row['prodName'] ?>
-                    <br>
-                    PRICE: <?= $row['prodPrice'] ?>
-                    <br>
-                    DESCRIPTION: <?= $row['prodInfo'] ?>
-                    <br>
-                    <?php echo '<img width="400" height="300" src="data:image/jpeg;base64,' . base64_encode($row['prodImage']) . '"/>'; ?>
+    <!-- shows products-->
+    <section id="page-section">
+        <div class="container">
+            <div class="row">
                 <?php
-            }
+                $num_rows = $rows->fetchColumn();
+                if ($num_rows <= 0) {
+                    echo "<h1><center>No products found</h1></center>";
+                    echo "<br>";
+                }
+                foreach ($rows as $row) {
                 ?>
-                </div>
-            </a>
-    </div>
-
-    <?php include('footer.php'); ?>
+                    <br>
+                    <a href="productDisplay.php?id=<?php echo $row['prodID'] ?>">
+                        <div class="col-sm-3 col-md-6 col-lg-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <?php echo '<img width="100" height="100" src="data:image/jpeg;base64,' . base64_encode($row['prodImage']) . '"/>'; ?>
+                                    <h5 class="card-title"><b><?php echo $row['prodName']; ?></b></h5>
+                                    <p class="tags">Price: £<?php echo $row['prodPrice']; ?></p>
+                                    <p class="card-text small"><?php echo $row['prodInfo']; ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                <?php
+                }
+                ?>
+            </div>
+        </div>
+    </section>
 
 </body>
+<br>
+<!-- footer for the page -->
+<?php include('footer.php'); ?>
 
 </html>

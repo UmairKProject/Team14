@@ -1,43 +1,93 @@
+<!DOCTYPE html>
+<html>
 
-$username = $password = $confirmPassword = "";
-$oldUsername = $oldPassword = "";
-$confirm_password_err = "";
+<head>
+    <title>MW4U |Men’s Wear 4 U</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="./assets/logos/favicon.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <?php
+    require_once("connectDB.php");
+    $db = new PDO("mysql:dbname=$db_name;host=$db_host", $username, $password);
+    $id = $_GET["id"];
+    $rows = $db->query("SELECT * FROM products WHERE prodID=$id");
+    ?>
+</head>
 
-require_once("config.php");
+<?php include('header.php') ?>
 
-if (isset($_POST['submit'])) {
-    $id = $_GET['id'];
-    $query = "SELECT * FROM customers WHERE customerID = $id";
-    $result = mysqli_query($link, $query);
-    $row = mysqli_fetch_assoc($result);
-    $oldUsername = $row['customerUsername'];
-    $oldPassword = $row['customerPassword'];
+<body>
 
-    $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
-    $confirmPassword = trim($_POST['confirmPassword']);
+    <div class="singleProductContainer">
+        <?php
+        foreach ($rows as $row) {
+        ?>
+            <div class="row">
+                <div class="col-md-4">
+                    <?php echo '<img width="400" height="300" src="data:image/jpeg;base64,' . base64_encode($row['prodImage']) . '"/>'; ?>
+                </div>
+                <div class="col-md-8">
+                    <?= $row['prodName'] ?>
+                    <hr>
+                    <?= $row['prodInfoShort'] ?>
+                    <br>
+                    <h5>Price:£<?= $row['prodPrice'] ?></h5>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <form method="post" action="cart.php?action=add&code=<?php echo $row["prodCode"]; ?>">
+                                <div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2" /><input type="submit" value="Add to Cart" class="btnAddAction" /></div>
+                            </form>
+                        </div>
+                    </div>
+                    <hr>
+                    Product Description:
+                    <br>
+                    <?= $row['prodInfo'] ?>
+                </div>
 
-    if (empty($username)) {
-        $username = $oldUsername;
-    }
-    if (empty($password)) {
-        $password = $oldPassword;
-    }
-    if ($password != $confirmPassword) {
-        $confirm_password_err = '<span style ="color:#f44242;text-align:left;font-size:15px">Password did not match</span>';
-    } else {
-        $param_username = $username;
-        $param_password = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "UPDATE customers SET customerUsername = '$param_username', customerPassword = '$param_password' WHERE customerID = $id;";
-        $stmt = mysqli_prepare($link, $sql);
-        if(mysqli_stmt_execute($stmt)){
-            header("location: adminDashboard.php");
-        } else {
-            echo "Unable to update customer records.";
+            </div>
+
+        <?php
         }
-        // Close statement
-        mysqli_stmt_close($stmt);
-    }
+        ?>
+    </div>
 
-// Close connection
-mysqli_close($link);
+</body>
+
+<?php include('footer.php'); ?>
+
+</html>
+
+---------------------------------------------------------
+
+
+
+	<div id="product-grid">
+		<div class="txt-heading">Products</div>
+		<?php
+		$product_array = $db_handle->runQuery("SELECT * FROM products ORDER BY prodID ASC");
+		if (!empty($product_array)) {
+			foreach ($product_array as $key => $value) {
+		?>
+				<div class="product-item">
+					<form method="post" action="cart.php?action=add&code=<?php echo $product_array[$key]["prodCode"]; ?>&size=XS">
+						<div class="product-image"><?php echo '<img width="150" height="150" src="data:image/jpeg;base64,' . base64_encode($product_array[$key]["prodImage"]) . '"/>'; ?></div>
+						<div class="product-tile-footer">
+							<div class="product-title"><?php echo $product_array[$key]["prodName"]; ?></div>
+							<div class="product-price"><?php echo "£" . $product_array[$key]["prodPrice"]; ?></div>
+							<div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2" /><input type="submit" value="Add to Cart" class="btnAddAction" /></div>
+						</div>
+					</form>
+				</div>
+		<?php
+			}
+		}
+		?>
+	</div>

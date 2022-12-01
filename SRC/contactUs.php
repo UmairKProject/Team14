@@ -1,3 +1,17 @@
+<?php
+include 'connectDB.php';
+
+if (isset($_POST['send'])) {
+  $email = trim($_POST['email']);
+  $name = trim($_POST['name']);
+  $subject = trim($_POST['subject']);
+  $message = trim($_POST['msg']);
+
+  $stmt = $db->prepare("INSERT INTO contactUS (email, name, subject, message) VALUES ('$email', '$name', '$subject', '$message');");
+  $stmt->execute();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <title>Contact Us | Here you can contact Us</title>
@@ -16,22 +30,23 @@
 </head>
 
 <body>
-
-  <form class="contact" method="post" action="">
+  <div id="mainStuff" class="sidebar">
+    <h1 class="sideh1">Our Contact details</h1>
+    <p class="sidep">Email address: team14@aston.ac.uk</p>
+    <p class="sidep">Address: Aston University B4 7ET</p>
+    <P class="sidep">Phone: 07100000000</P>
+    <p class="sidep">Any Question? feel free to contact</p>
+  </div>
+  <br>
+  <form class="contact" method="post" >
     <h1>Contact Form</h1>
     <div class="fields">
-      <label for="email">
-        <i class="fas fa-envelope"></i>
         <input id="email" type="email" name="email" placeholder="Your Email" required>
-      </label>
-      <label for="name">
-        <i class="fas fa-user"></i>
         <input type="text" name="name" placeholder="Your Name" required>
-        <label>
-          <input type="text" name="subject" placeholder="Subject" required>
-          <textarea name="msg" placeholder="Message" required></textarea>
+        <input type="text" name="subject" placeholder="Subject" required>
+        <textarea name="msg" placeholder="Message" required></textarea>
     </div>
-    <input type="submit">
+    <input name="send" type="submit">
   </form>
 
   <?php include 'footer.php'; ?>

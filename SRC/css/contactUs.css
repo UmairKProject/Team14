@@ -26,7 +26,11 @@ pre {
 
 html {
     background-color: #F8F9F9;
-    padding: 30px;
+}
+
+#mainStuff {
+    text-align: center;
+    font-weight: bold;
 }
 
 input,
