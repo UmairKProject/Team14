@@ -1,6 +1,17 @@
+<?php
+//Database connection file
+require_once("connectDB.php");
+if (isset($_GET['search'])) {
+    //Get search value from URL
+    $searchValue = $_GET['search'];
+    //Database query using the search value
+    $rows = $db->query("SELECT * FROM products WHERE MATCH(prodName) AGAINST('$searchValue')");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Page title with other essential links to support CSS and Bootstrap elemts used in the website -->
 <head>
     <title>Products |Find your product here</title>
     <meta charset="utf-8">
@@ -14,42 +25,12 @@
     <link rel="stylesheet" type="text/css" href="css/products.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <?php
-    require_once("connectDB.php");
-    if (isset($_GET['search'])) {
-        $searchValue = $_GET['search'];
-        $rows = $db->query("SELECT * FROM products WHERE MATCH(prodName) AGAINST('$searchValue')");
-    }
-    ?>
 </head>
 
 <!-- header for the page-->
 <header>
     <!-- Navbar class used to locat the navbar in the landing page -->
-    <nav class="navbar navbar-default">
-        <a class="navbar-brand" href="index.php"></a>
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a href="index.php"><img src="Images/Logo.png" alt="logo" style="width: 80px;"></a>
-
-                <!-- Constractor of the lnding page and other pages linked -->
-            </div>
-            <ul class="nav navbar-nav">
-                <li><a href="index.php?page=home"><i class="fa fa-fw fa-home"></i> Home</a></li>
-                <li class="active"><a href="products.php?page=product">Products</a></li>
-                <li><a href="login.php?page=account">My Account</a></li>
-                <li><a href="contactUs.php?page=contact">Contact Us</a></li>
-                <li><a href="aboutUs.php?page=about">About Us</a></li>
-                <li><a href="cart.php?page=cart">Checkout</a></li>
-            </ul>
-            <form class="navbar-form navbar-right" action="/productSearch.php">
-                <div class="form-group">
-                    <input type="text" name="search" class="form-control" placeholder="Search" />
-                    <input type="submit" class="btn btn-primary" value="Search" />
-                </div>
-            </form>
-        </div>
-    </nav>
+    <?php include 'header.php'; ?>
 </header>
 
 <body>
@@ -59,13 +40,16 @@
             <div class="row">
                 <?php
                 $num_rows = $rows->fetchColumn();
+                //If no products are found then display message 
                 if ($num_rows <= 0) {
                     echo "<h1><center>No products found</h1></center>";
                     echo "<br>";
                 }
+                //Otherwise iterate through all products to display
                 foreach ($rows as $row) {
                 ?>
                     <br>
+                    <!-- link to product display page -->
                     <a href="productDisplay.php?id=<?php echo $row['prodID'] ?>&page=product">
                         <div class="col-sm-3 col-md-6 col-lg-4">
                             <div class="card">
@@ -83,10 +67,10 @@
             </div>
         </div>
     </section>
-
+    <!-- footer for the page -->
+    <footer><?php include('footer.php'); ?></footer>
 </body>
 <br>
-<!-- footer for the page -->
-<?php include('footer.php'); ?>
+
 
 </html>

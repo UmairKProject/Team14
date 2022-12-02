@@ -2,7 +2,7 @@
 // Initialize the session
 session_start();
 
-// Check if the user is logged in, if not then redirect him to login page
+// Check if the user is logged in, if not then redirect them to login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: adminLogin.php");
     exit;
@@ -18,6 +18,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <link rel="icon" type="image/x-icon" href="/Images/Logo.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- styling for the body and highlights each user when hovered over -->
     <style>
         body {
             font: 14px sans-serif;
@@ -31,10 +32,16 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 </head>
 
 <body>
-    <?php include 'adminDashboardHeader.php'; ?>
+    <header>
+        <!-- admin wide navbar -->
+        <?php include 'adminDashboardHeader.php'; ?>
+    </header>
+
     <br>
+    <!-- welcome message -->
     <h1 class="my-5">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to our site.</h1>
 
+    <!-- order table -->
     <div class="card mb-3">
         <div class="card-header">
             <i class="fa fa-table"></i> Orders
@@ -52,7 +59,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         </tr>
                     </thead>
                     <?php
+                    //Database connection file
                     include("dashboardConfig.php");
+                    //Query for database
                     $sql = 'SELECT * from orders';
                     if (mysqli_query($conn, $sql)) {
                         echo "";
@@ -94,6 +103,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             </div>
         </div>
 
+        <!-- registered users table -->
         <div class="card mb-3">
             <div class="card-header">
                 <i class="fa fa-table"></i> Registered Users
@@ -109,7 +119,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             </tr>
                         </thead>
                         <?php
+                        //Database connection file
                         include("dashboardConfig.php");
+                        //Query for database 
                         $sql = 'SELECT * from customers';
                         if (mysqli_query($conn, $sql)) {
                             echo "";
@@ -147,6 +159,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 </div>
             </div>
 
+            <!-- all products table -->
             <div class="card mb-3">
                 <div class="card-header">
                     <i class="fa fa-table"></i> Current Listed Product Table
@@ -165,7 +178,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 </tr>
                             </thead>
                             <?php
+                            //Database connection file
                             include("dashboardConfig.php");
+                            //Query for database  
                             $sql = 'SELECT * from products';
                             if (mysqli_query($conn, $sql)) {
                                 echo "";

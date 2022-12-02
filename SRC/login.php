@@ -69,9 +69,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             if ($_POST['username'] != "" || $_POST['password'] != "") {
                 $usernames = $_POST['username'];
-                // md5 encrypted
+                // md5 encruption
                 $passwords = md5($_POST['password']);
                 //$password = $_POST['password'];
+                //Sql statements
                 $sqls = "SELECT * FROM `customers` WHERE `customerUsername`=? AND `customerPassword`=? ";
                 $query = $link->prepare($sqls);
                 $query->execute(array($usernames, $passwords));
@@ -81,7 +82,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION['username'] = $fetch['customerID'];
                     //echo "<script>alert('That was successfull!')</script> <script>window.location = '#'</script>";
                 } else {
-                    // echo "<script>alert('Invalid Username or Password')</script><script>window.location = 'login.php'</script>";
+                    //Username or password doesn't exist, dispaly a generic error
+                    $login_err = "Invalid Username or Password";
+                    //echo "<script>alert('Invalid Username or Password')</script><script>window.location = 'login.php'</script>";
                 }
             }
 
@@ -98,6 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Page title with other essential links to support CSS and Bootstrap elemts used in the website -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -126,14 +130,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </style>
 
 <body>
-    <?php include 'header.php'; ?>
+    <!-- navbar for site -->
+    <header><?php include 'header.php'; ?></header>
 
     <div class="title">
         <h1>Login</h1>
         <div id="login">
             <div class="textinfo">
                 <h2>Welcome back!</h2>
-                <!-- onsubmit="return validate()-->
+                <!-- form to gather login details from user -->
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                     <label>Username</label><br>
                     <input type="text" name="username" placeholder="Username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
@@ -145,13 +150,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="h-captcha" data-sitekey="667aee51-3796-4f0c-a600-8c4f4754745a" required></div>
             <!--data-callback="verifyCaptcha"-->
             <div id="bot-verify"></div>
-
+            <!-- buttons to login or register -->
             <div class="buttons">
                 <button class="login-button">Login</button><br>
                 <p3>or</p3><br>
                 <button onclick="location.href='register.php?page=account'" class="register-button" type="button">Register</button>
             </div>
             </form>
+            <!-- scripts used to allow for captcha verification -->
             <script src='https://www.hCaptcha.com/1/api.js'></script>
             <script>
                 var sec = '';
@@ -174,7 +180,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         </script>
 
-        <?php include 'footer.php'; ?>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <!-- footer for the site -->
+        <footer><?php include 'footer.php'; ?></footer>
 </body>
 
 </html>

@@ -2,7 +2,7 @@
 // Initialize the session
 session_start();
 
-// Include config file
+// Database connection file
 require_once "config.php";
 
 // Define variables and initialize with empty values
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = trim($_POST["password"]);
   }
 
-  // Validate credentials
+  // Validate entries
   if (empty($username_err) && empty($password_err)) {
     // Prepare a select statement
     $sql = "SELECT adminID, adminUsername, adminPassword FROM admin WHERE adminUsername = ?";
@@ -43,35 +43,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Store result
         mysqli_stmt_store_result($stmt);
 
-        // Check if username exists, if yes then verify password
+        // Check if username exists, if yes then password is verified
         if (mysqli_stmt_num_rows($stmt) == 1) {
-          // Bind result variables
+          // Bind the result variables
           mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
           if (mysqli_stmt_fetch($stmt)) {
             if (password_verify($password, $hashed_password)) {
-              // Password is correct, so start a new session
+              //Start the session, because the password is correct
               session_start();
 
               // Store data in session variables
               $_SESSION["loggedin"] = true;
               $_SESSION["id"] = $id;
               $_SESSION["username"] = $username;
-              // Redirect user to welcome page
+              // Redirect user to admin dashboard page
               header("location: adminDashboard.php");
             } else {
-              // Password is not valid, display a generic error message
+              // Password is not valid, so display error message
               $login_err = "Invalid username or password.";
             }
           }
         } else {
-          // Username doesn't exist, display a generic error message
+          // Username doesn't exist, so display error message
           $login_err = "Invalid username or password.";
         }
       } else {
         echo "Oops! Something went wrong. Please try again later.";
       }
 
-      // Close statement
+      // Close the statement
       mysqli_stmt_close($stmt);
     }
   }
@@ -104,14 +104,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
+  <header>
+    <!-- general navbar used accross all pages -->
   <?php include 'header.php'; ?>
-
+  </header>
+  
   <div class="title">
     <h1>Login</h1>
     <div id="login">
       <div class="textinfo">
         <h2>Welcome back!</h2>
-        <!-- onsubmit="return validate()-->
+        <!-- form used to login -->
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" onsubmit="return validate();">
           <label>Username</label><br>
           <input type="text" name="username" placeholder="Username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
@@ -122,13 +125,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
       <div class="h-captcha" data-sitekey="667aee51-3796-4f0c-a600-8c4f4754745a" data-callback="verifyCaptcha" required></div>
       <div id="bot-verify"></div>
-
+      <!-- button used to login -->
       <div class="buttons">
         <button class="login-button">Login</button><br>
-        <p3>or</p3><br>
-        <button onclick="location.href='adminSignUp.php'" class="register-button" type="button">Register</button>
       </div>
       </form>
+      <!-- scripts used to add the functioning captcha -->
       <script src='https://www.hCaptcha.com/1/api.js'></script>
       <script>
         var sec = '';
@@ -150,8 +152,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </form>
     </div>
     </script>
-
+    
+    <footer>
+    <!-- general footer used across all pages -->
     <?php include 'footer.php'; ?>
+    </footer>
 </body>
 
 </html>

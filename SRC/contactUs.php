@@ -1,17 +1,20 @@
 <?php
+//Database connection file
 include 'connectDB.php';
 
+//If form is submitted
 if (isset($_POST['send'])) {
+  //Assign values to variables 
   $email = trim($_POST['email']);
   $name = trim($_POST['name']);
   $subject = trim($_POST['subject']);
   $message = trim($_POST['msg']);
-
+  //Insertion into database contactUs
   $stmt = $db->prepare("INSERT INTO contactUs (email, name, subject, message) VALUES ('$email', '$name', '$subject', '$message');");
   $stmt->execute();
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <title>Contact Us | Here you can contact Us</title>
@@ -26,22 +29,26 @@ if (isset($_POST['send'])) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-<head>
-  <?php include 'header.php'; ?>
-</head>
 
 <body>
+  <!-- navbar for the site -->
+  <header> <?php include 'header.php'; ?></header>
+  <!-- general contact information for the company -->
   <div id="mainStuff" class="sidebar">
     <h1 class="sideh1">Our Contact details</h1>
+    <br>
+    <br>
     <p class="sidep">Email address: team14@aston.ac.uk</p>
     <p class="sidep">Address: Aston University B4 7ET</p>
     <P class="sidep">Phone: 07100000000</P>
     <p class="sidep">Any Question? feel free to contact</p>
   </div>
   <br>
+  <!-- form used to gather data to be inserted into the database -->
   <form class="contact" method="post">
     <h1>Contact Form</h1>
     <div class="fields">
+      <!-- type="email" includes validation -->
       <input id="email" type="email" name="email" placeholder="Your Email" required>
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="text" name="subject" placeholder="Subject" required>
@@ -49,8 +56,11 @@ if (isset($_POST['send'])) {
     </div>
     <input name="send" type="submit">
   </form>
+  <br>
+  <br>
 
-  <?php include 'footer.php'; ?>
+  <!-- footer of the site -->
+  <footer><?php include 'footer.php'; ?></footer>
 
 </body>
 

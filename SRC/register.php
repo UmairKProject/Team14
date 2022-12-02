@@ -99,6 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Page title with other essential links to support CSS and Bootstrap elemts used in the website -->
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="/Images/Logo.ico">
@@ -116,23 +117,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <title>Register Page</title>
+  <!--Css font-style for the body-->
+  <style>
+    body {
+      font-family: "Lato", sans-serif
+    }
+  </style>
 </head>
-<!--Css font-style for the body-->
-<style>
-  body {
-    font-family: "Lato", sans-serif
-  }
-</style>
+
 
 <body>
+  <!-- navbar for the site -->
   <?php include 'header.php'; ?>
-
+  
+  <!-- register form -->
   <div class="title">
     <h1>Register</h1>
   </div>
   <div id="register">
     <div class="textinfo">
       <h3>Create a Free Account now!</h3>
+      <!-- form that gets users credentials -->
       <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" onsubmit="return validate();">
         <label>Username:<span>*</span></label><br>
         <input type="text" name="username" placeholder="Username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
@@ -153,7 +158,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <button onclick="location.href='login.php?page=account'" class="login-buttonv2" type="button">Login</button>
     </div>
     </form>
-
+    <!-- scripts used to allow captcha verification to function -->
     <script src='https://www.hCaptcha.com/1/api.js'></script>
     <script>
       var sec = '';
@@ -176,7 +181,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   </div>
   </script>
-
+  <!-- footer for the page -->
   <?php include 'footer.php'; ?>
 </body>
 

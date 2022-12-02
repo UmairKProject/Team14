@@ -1,3 +1,4 @@
+<!-- file used to logout the user -->
 <?php
 // Initialize the session
 session_start();

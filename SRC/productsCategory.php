@@ -1,6 +1,20 @@
+<?php
+//Database connection file
+require_once("connectDB.php");
+
+if (isset($_GET['id'])) {
+  //Get the categoryID from the url
+  $id = $_GET["id"];
+  $rows = $db->query("SELECT * FROM products WHERE categoryID=$id");
+} else {
+  //Message dispalyed if id is not a category
+  echo "Not a category";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Page title with other essential links to support CSS and Bootstrap elemts used in the website -->
 <head>
   <title>Products |Find your product here</title>
   <meta charset="utf-8">
@@ -14,28 +28,18 @@
   <link rel="stylesheet" type="text/css" href="css/products.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <?php
-  require_once("connectDB.php");
-  $db = new PDO("mysql:dbname=$db_name;host=$db_host", $username, $password);
-  if (isset($_GET['id'])) {
-    $id = $_GET["id"];
-    $rows = $db->query("SELECT * FROM products WHERE categoryID=$id");
-  } else {
-    echo "Not a category";
-  }
-
-  ?>
-
 </head>
-<!-- header for the page-->
-<?php include('header.php'); ?>
 
 <body>
+  <!-- header for the page-->
+  <header><?php include('header.php'); ?></header>
+
   <!-- shows products-->
   <section id="page-section">
     <div class="container">
       <div class="row">
         <?php
+        //Iterate through all relevant products
         foreach ($rows as $row) {
         ?>
           <br>
@@ -57,9 +61,10 @@
     </div>
   </section>
 
+  <!-- footer for the page -->
+  <?php include('footer.php'); ?>
 </body>
 <br>
-<!-- footer for the page -->
-<?php include('footer.php'); ?>
+
 
 </html>

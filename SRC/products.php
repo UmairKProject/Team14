@@ -1,6 +1,14 @@
+<?php
+//Database connection file
+require_once("connectDB.php");
+//Query required to dispaly all products
+$rows = $db->query("SELECT * FROM products ORDER BY categoryID;");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Page title with other essential links to support CSS and Bootstrap elemts used in the website -->
 <head>
   <title>Products |Find your product here</title>
   <meta charset="utf-8">
@@ -14,40 +22,37 @@
   <link rel="stylesheet" type="text/css" href="css/products.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!-- styling for the site -->
+  <style>
+    body {
+      font-family: "Lato", sans-serif
+    }
 
-  <!-- 
-    <?php
-    require_once("connectDB.php");
-    $rows = $db->query("SELECT * FROM products ORDER BY categoryID;");
+    .mySlides {
+      display: none
+    }
 
-    ?>
--->
+    html {
+      box-sizing: border-box;
+    }
+  </style>
 </head>
-<style>
-  body {
-    font-family: "Lato", sans-serif
-  }
 
-  .mySlides {
-    display: none
-  }
 
-  html {
-    box-sizing: border-box;
-  }
-</style>
-<!-- navbar for this page -->
-<?php include('header.php'); ?>
 
 <body>
+  <!-- navbar for this page -->
+  <header><?php include('header.php'); ?></header>
   <!-- shows products-->
   <section id="page-section">
     <div class="container">
       <div class="row">
         <?php
+        //Iterate through each product row
         foreach ($rows as $row) {
         ?>
           <br>
+          <!-- link that lets you display more information for a product -->
           <a href="productDisplay.php?id=<?php echo $row['prodID'] ?>&page=product">
             <div class="col-sm-3 col-md-6 col-lg-4">
               <div class="card">
@@ -65,27 +70,24 @@
       </div>
     </div>
   </section>
-        
-           
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 
 
 
-  <!--This Java Script code would allow the user to push a button and automaticly scroll all the way up to the top of the page-->  
-    <script type="text/javascript" src="js/scrolltopcontrol.js">
-
-    
+  <!--This Java Script code would allow the user to push a button and automaticly scroll all the way up to the top of the page-->
+  <script type="text/javascript" src="js/scrolltopcontrol.js">
     /***********************************************
-    * Scroll To Top Control script- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
-    * Please keep this notice intact
-    * Visit Project Page at http://www.dynamicdrive.com for full source code
-    ***********************************************/
-    
-    </script>
-
+     * Scroll To Top Control script- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
+     * Please keep this notice intact
+     * Visit Project Page at http://www.dynamicdrive.com for full source code
+     ***********************************************/
+  </script>
+  <!-- page footer-->
+  <footer><?php include 'footer.php'; ?></footer>
 </body>
 <br>
-<!-- page footer-->
-<?php include 'footer.php'; ?>
+
 
 </html>

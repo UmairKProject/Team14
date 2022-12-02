@@ -15,10 +15,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <?php
-  require_once("connectDB.php");
-  $rows = $db->query("SELECT * FROM products");
-  ?>
   <!-- This is for the rollover images, hovering over, the image changes and shows the second image-->
   <script language="javascript">
     function MouseRollover(MyImage) {
@@ -30,6 +26,7 @@
     }
   </script>
 </head>
+
 <!-- Internal CSS used to locat elemnts used in the landing page -->
 <style>
   body {
@@ -83,13 +80,10 @@
     text-align: center;
   }
 </style>
-<!-- Navbar class used to locat the navbar in the landing page -->
-
-<?php include("header.php"); ?>
-
 
 <body onLoad="show_clock()">
-
+  <!-- navbar for the site -->
+  <header><?php include("header.php"); ?></header>
   <div class="text-center">
     <br>
     <h3 style="font-size: xx-large;"> Pleased to meet you here</h3>
@@ -145,14 +139,14 @@
         <img src="Images/teen6.jpg" alt="Home page">
         <div class="carousel-caption">
           <h3>High quality, long lasting</h3>
-          <P> <a href="products.php">See more in product page</a></P>
+          <P> <a href="products.php?page=product">See more in product page</a></P>
         </div>
       </div>
       <div class="item active">
         <img src="Images/teen1.jpg" alt="Benz A class">
         <div class="carousel-caption">
           <h3>Buy your desired style</h3>
-          <P> <a href="products.php">See more in product page</a></P>
+          <P> <a href="products.php?page=product">See more in product page</a></P>
         </div>
       </div>
 
@@ -160,7 +154,7 @@
         <img src="Images/teen2.jpg" alt="Benz B class">
         <div class="carousel-caption">
           <h3>Easy way to look smart</h3>
-          <P> <a href="products.php">See more in product page</a></P>
+          <P> <a href="products.php?page=product">See more in product page</a></P>
         </div>
       </div>
 
@@ -168,7 +162,7 @@
         <img src="Images/teen3.jpg" alt="Benz C class">
         <div class="carousel-caption">
           <h3>To look great, you need a few click</h3>
-          <P> <a href="products.php">See more in product page</a></P>
+          <P> <a href="products.php?page=product">See more in product page</a></P>
         </div>
       </div>
 
@@ -176,7 +170,7 @@
         <img src="Images/teen4.jpg" alt="Electric cars">
         <div class="carousel-caption">
           <h3>Just explore MW4U</h3>
-          <P> <a href="products.php">See more in product page</a></P>
+          <P> <a href="products.php?page=product">See more in product page</a></P>
         </div>
       </div>
 
@@ -184,7 +178,7 @@
         <img src="Images/teen5.jpg" alt="Benz E class">
         <div class="carousel-caption">
           <h3>Beauty on the outside. Wellness on the inside.</h3>
-          <P> <a href="products.php">See more in product page</a></P>
+          <P> <a href="products.php?page=product">See more in product page</a></P>
         </div>
       </div>
     </div>
@@ -201,38 +195,45 @@
   </div>
   <!-- The website description Section -->
   <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
-
+    <!-- categories with relevant links that lead to a product category page -->
     <div class="w3-row w3-padding-32">
       <br>
       <div class="w3-third">
+        <!-- Shoes category page -->
         <p><b><a href="productsCategory.php?id=1&page=product">Shoes</a></b></p>
         <img src="Images/teen7.jpg" class="Hot A class" alt="Random Name" style="width:90%">
       </div>
       <div class="w3-third">
+        <!-- T Shirt category page -->
         <p><b><a href="productsCategory.php?id=2&page=product">T-Shirt</a></b></p>
         <img src="assets/images/blackTee.jpg" class="w3-round" alt="Random Name" style="width:90%">
       </div>
       <div class="w3-third">
+        <!-- Jeans category page -->
         <p><b><a href="productsCategory.php?id=3&page=product">Jeans</a></b></p>
         <img src="Images/teen9.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:90%">
       </div>
       <br>
       <br>
       <div class="w3-third">
+        <!-- Caps category page -->
         <p><b><a href="productsCategory.php?id=4&page=product">Caps</a></b></p>
         <img src="Images/teen10.jpg" class="w3-round" alt="Random Name" style="width:90%">
       </div>
       <div class="w3-third">
+        <!-- Hoodies category page -->
         <p><b><a href="productsCategory.php?id=5&page=product">Hoodies</a></b></p>
         <img src="Images/teen11.jpg" class="w3-round" alt="Random Name" style="width:90%">
       </div>
       <div class="w3-third">
+        <!-- Shirts category page -->
         <p><b><a href="productsCategory.php?id=6&page=product">Shirts</a></b></p>
         <img src="Images/teen12.jpg" class="w3-round" alt="Random Name" style="width:90%">
         <br>
       </div>
     </div>
-    <P><b> <a href="products.php">See all products in Product pags</a></b></P>
+    <!-- Link to all products page -->
+    <P><b> <a href="products.php?page=product">See all products in Product pags</a></b></P>
   </div>
 
   <div class="container">

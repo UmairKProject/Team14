@@ -2,7 +2,7 @@
 // Initialize the session
 session_start();
 
-// Check if the user is logged in, if not then redirect him to login page
+// Check if the user is logged in, if not then redirect them to login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: adminLogin.php");
     exit;
@@ -18,26 +18,29 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <link rel="icon" type="image/x-icon" href="/Images/Logo.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- styling to algin table -->
     <style>
         body {
             font: 14px sans-serif;
             text-align: center;
         }
-
-        #userPref:hover {
-            background-color: #e5e5e5;
-        }
     </style>
 </head>
 
 <body>
+    <!-- navbar used across all admin pages -->
+    <header>
     <?php include 'adminDashboardHeader.php'; ?>
-    <br>
-    <h1 class="my-5">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to our site.</h1>
+    </header>
 
+    <br>
+    <!-- welcome message to user -->
+    <h1 class="my-5">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to our site.</h1>
+    
+    <!-- table to display all messages -->
     <div class="card mb-3">
         <div class="card-header">
-            <i class="fa fa-table"></i> Orders
+            <i class="fa fa-table"></i> Messages
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -52,8 +55,11 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         </tr>
                     </thead>
                     <?php
+                    //Database connection files
                     include("dashboardConfig.php");
+                    //Query the database
                     $sql = 'SELECT * from contactUs';
+                    //Error checking for the query
                     if (mysqli_query($conn, $sql)) {
                         echo "";
                     } else {

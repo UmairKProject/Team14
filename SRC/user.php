@@ -7,20 +7,20 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: login.php");
     exit;
 }
+//Database connection file
 require_once("connectDB.php");
-$db = new PDO("mysql:dbname=$db_name;host=$db_host", $username, $password);
-
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Page title with other essential links to support CSS and Bootstrap elements used in the website -->
 <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
     <link rel="icon" type="image/x-icon" href="/Images/Logo.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- styling for the site that centres the tables -->
     <style>
         body {
             font: 14px sans-serif;
@@ -30,6 +30,7 @@ $db = new PDO("mysql:dbname=$db_name;host=$db_host", $username, $password);
 </head>
 
 <body>
+    <!-- navbar for the user dashboard site -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
         <a class="navbar-brand" href="adminDashboard.php">Customer Dashboard</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,7 +56,8 @@ $db = new PDO("mysql:dbname=$db_name;host=$db_host", $username, $password);
             </ul>
         </div>
     </nav>
-
+    
+    <!-- orders table -->
     <div class="card mb-3">
         <div class="card-header">
             <i class="fa fa-table"></i> Orders
@@ -72,7 +74,9 @@ $db = new PDO("mysql:dbname=$db_name;host=$db_host", $username, $password);
                         </tr>
                     </thead>
                     <?php
+                    //Database connection file
                     include("dashboardConfig.php");
+                    //Get user id from the url
                     $id = $_GET["id"];
                     $sql = "SELECT * FROM orders WHERE customerID=$id";
                     if (mysqli_query($conn, $sql)) {
@@ -83,7 +87,7 @@ $db = new PDO("mysql:dbname=$db_name;host=$db_host", $username, $password);
                     $count = 1;
                     $result = mysqli_query($conn, $sql);
                     if (mysqli_num_rows($result) > 0) {
-                        // output data of each row
+                        // output order(s) data
                         while ($row = mysqli_fetch_assoc($result)) { ?>
                             <tbody>
                                 <tr>
