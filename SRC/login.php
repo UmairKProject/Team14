@@ -142,6 +142,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="password" name="password" placeholder="Password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
                     <span class="invalid-feedback"><?php echo $password_err; ?></span><br>
             </div>
+            <!--h-capacha code below with stie key-->
+            <!--Reference for code used: https://docs.hcaptcha.com/switch/-->
             <div class="h-captcha" data-sitekey="667aee51-3796-4f0c-a600-8c4f4754745a" required></div>
             <!--data-callback="verifyCaptcha"-->
             <div id="bot-verify"></div>
